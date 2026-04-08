@@ -117,7 +117,7 @@ id String @id @default(uuid())
   competences    String
   domaine        String
   type           String
-  dates          String
+  dates          DateTime
   date_debut     DateTime
   date_fin       DateTime
 
