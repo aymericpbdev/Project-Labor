@@ -105,15 +105,15 @@ model Annonce {
 
   titre          String
   statut         StatutAnnonce @default(Ouverte)
-  nombreDePostes String
+  nombreDePostes Int
   hebergement    String
-  remuneration   String
+  remuneration   Folat
   competences    String
   domaine        String
   type           String
   dates          String
-  date_debut     String
-  date_fin       String
+  date_debut     DateTime
+  date_fin       DateTime
 
   // Une annonce reçoit plusieurs candidatures
   candidatures Candidature[]
