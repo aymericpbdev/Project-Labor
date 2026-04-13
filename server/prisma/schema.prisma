@@ -80,7 +80,6 @@ model User {
   // Relations
   exploitation Exploitation?
   saisonnier   Saisonnier?
-  annonces     Annonce[]     @relation("AnnoncesAgriculteur")
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -129,29 +128,36 @@ model Saisonnier {
 model Annonce {
   id String @id @default(uuid())
 
-  // Relation Exploitation
+  // Relation Exploitation (l'agriculteur est accessible via exploitation.user)
   exploitationId String
   exploitation   Exploitation @relation(fields: [exploitationId], references: [id])
 
-  agriculteurId String
-  agriculteur   User   @relation("AnnoncesAgriculteur", fields: [agriculteurId], references: [id])
+  // Contenu de l'annonce
+  titre       String
+  description String
+  statut      StatutAnnonce @default(Brouillon)
 
-  titre            String
-  statut           StatutAnnonce    @default(Brouillon)
+  // Poste
   nombreDePostes   Int
-  hebergement      Boolean          @default(false)
+  competences      Competences[]
+  typeCulture      TypeCulture
+  typeHoraire      TypeHoraire
+
+  // Conditions
   remuneration     Decimal
   typeRemuneration TypeRemuneration @default(ParHeure)
-  competences      Competences[]
-  domaine          String
-  typeHoraire      TypeHoraire[]
-  dateFin          DateTime
-  dateDebut        DateTime
-  typeCulture      TypeCulture[]
-  localisation     String
-  descriptionAnnonce  String
+  hebergement      Boolean          @default(false)
 
-  // Une annonce reçoit plusieurs candidatures
+  // Période
+  dateDebut DateTime
+  dateFin   DateTime
+
+  // Localisation (pré-remplie depuis l'exploitation, mais indépendante)
+  ville       String
+  codePostal  String?
+  departement String
+
+  // Relations
   candidatures Candidature[]
 
   createdAt DateTime @default(now())
