@@ -2,6 +2,7 @@ import Button from '../../components/ui/Button/Button'
 import AnnonceCard from '../../components/annonces/AnnonceCard/AnnonceCard'
 import AnnonceCardSaison from '../../components/annonces/AnnonceCardSaison/AnnonceCardSaison'
 import AnnonceCardAgri from '../../components/annonces/AnnonceCardAgri/AnnonceCardAgri'
+import Badge from '../../components/ui/Badge/Badge'
 
 
 function HomePage() {
@@ -98,6 +99,15 @@ function HomePage() {
         statut="brouillon"
         candidaturesTotal={0}
       />
+
+      <Badge variant='Pending' size='l'  ></Badge>
+      <Badge variant='Accepted' size='m'  ></Badge>
+      <Badge variant='Rejected' size='s'  ></Badge>
+      <Badge variant='Active' size='l'  ></Badge>
+      <Badge variant='Draft' size='m'  ></Badge>
+      <Badge variant='Closed' size='s'  ></Badge>
+
+
 
       </div>
     
