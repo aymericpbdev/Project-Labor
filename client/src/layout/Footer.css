@@ -11,6 +11,9 @@
     height: 4px;
     background: var(--labor-color-border-gradient);
   }
+  .footer__accent-line--connected {
+    background: var(--labor-color-border-gradient-green);
+  }
   
   /* Contenu principal: layout deux colonnes */
   .footer__content {

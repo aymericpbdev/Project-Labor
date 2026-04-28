@@ -29,7 +29,7 @@ const mockCurrentUser: User = {
   firstName: 'Jean',
   lastName: 'Dupont',
   email: 'jean.dupont@example.com',
-  role: Role.SeasonalWorker,  // changer de role : Role.SeasonalWorker ; Role.Farmer ; setCurrentUser(null)
+  role: Role.Farmer,  // changer de role : Role.SeasonalWorker ; Role.Farmer ; setCurrentUser(null)
   createdAt: new Date().toISOString(),
   updatedAt: new Date().toISOString(),
 };

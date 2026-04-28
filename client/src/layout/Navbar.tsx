@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Role } from '../types/enums'
 
 import './Navbar.css'
+import logo from '../assets/labor-logo-text.svg'
 
 type NavbarProps = {
   role: Role | null
@@ -19,8 +20,7 @@ function Navbar({ role, userName }: NavbarProps) {
       <nav className="navbar">
         {/* Logo commun à toutes les variantes */}
         <div className="navbar__logo">
-          {/* TODO: remplacer par le vrai composant logo */}
-          <span className="navbar__logo-text">LABOR</span>
+          <img src={logo} alt="Labor" className="navbar__logo-img"/>
         </div>
 
         {/* VERSION PUBLIQUE (non connecté)*/}
@@ -93,6 +93,7 @@ function Navbar({ role, userName }: NavbarProps) {
           </>
         )}
       </nav>
+      <div className={`header__accent-line ${isConnected ? 'header__accent-line--connected' : ''}`}></div>
     </header>
   )
 }

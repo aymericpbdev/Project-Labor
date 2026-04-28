@@ -24,32 +24,27 @@ const router = createBrowserRouter([
     ],
   },
 
-  // Routes agriculteur 
+  // Routes agriculteur
   {
     element: <AgriLayout />,
     children: [
-      // TODO: ajouter les vraies pages agri ici
-      // { path: '/mes-annonces', element: <MesAnnoncesPage /> },
-      // { path: '/creer-annonce', element: <CreerAnnoncePage /> },
-      // { path: '/profil', element: <ProfilAgriPage /> },
+      { path: '/agri', element: <p>Espace agriculteur</p> },
     ],
   },
 
-  // Routes saisonnier 
+  // Routes saisonnier
   {
     element: <SaisonLayout />,
     children: [
-      // TODO: ajouter les vraies pages saisonnier ici
-      // { path: '/annonces', element: <RecherchePage /> },
-      // { path: '/mes-candidatures', element: <MesCandidaturesPage /> },
-      // { path: '/profil', element: <ProfilSaisonPage /> },
+      { path: '/saison', element: <p>Espace saisonnier</p> },
     ],
   },
 
-  // Routes de test / fallback 
+  // Routes de test / fallback
   { path: '/homepage', element: <HomePage /> },
   { path: '/_test-auth', element: <TestPage /> },
   { path: '*', element: <NotFoundPage /> },
 ])
+
 
 export default router

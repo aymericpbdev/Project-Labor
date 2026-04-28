@@ -1,28 +1,26 @@
 import { Outlet } from 'react-router-dom'
-
 import { useAuth } from '../contexts/AuthContext'
+import { Role } from '../types/enums'
 import Navbar from './Navbar'
 import Footer from './Footer'
-
 import './Layout.css'
 
-function AgriLayout() {
-  const { role, currentUser } = useAuth()
+function SaisonLayout() {
+  const { currentUser } = useAuth()
 
-  // Construit le nom affiché dans la navbar (ex: "Jean D.")
   const displayName = currentUser
     ? `${currentUser.firstName} ${currentUser.lastName.charAt(0)}.`
     : ''
 
   return (
     <div className="layout">
-      <Navbar role={role} userName={displayName} />
+      <Navbar role={Role.Farmer} userName={displayName} />
       <main className="layout__main">
         <Outlet />
       </main>
-      <Footer />
+      <Footer isConnected={true} />
     </div>
   )
 }
 
-export default AgriLayout
+export default SaisonLayout

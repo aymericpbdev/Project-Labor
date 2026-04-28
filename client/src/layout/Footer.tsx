@@ -1,12 +1,16 @@
 
 import './Footer.css'
 import logo from '../assets/labor-logo-text.svg'
+type FooterProps = {
+  isConnected?: boolean
+}
 
-function Footer() {
+function Footer({ isConnected = false }: FooterProps) {
   return (
     <footer className="footer">
       {/* Ligne orange en haut du footer */}
-      <div className="footer__accent-line"></div>
+      <div className={`footer__accent-line ${isConnected ? 'footer__accent-line--connected' : ''}`}></div>
+      
 
       {/* Contenu principal, deux colonnes : marque à gauche, liens à droite */}
       <div className="footer__content">
@@ -14,7 +18,7 @@ function Footer() {
         {/* Colonne gauche : logo + baseline + description + réseaux sociaux */}
         <div className="footer__brand">
           <div className="footer__brand-logo">
-            {/* TODO: remplacer par le vrai composant logo quand il sera prêt */}
+
             <div className="navbar__logo">
                 <img src={logo} alt="Labor" className="navbar__logo-img"/>
 </div>
