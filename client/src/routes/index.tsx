@@ -12,7 +12,6 @@ import Connexion from '../pages/public/connexion'
 // Pages de test
 import TestPage from '../pages/test/TestPage'
 import NotFoundPage from '../pages/test/NotFoundPage'
-import HomePage from '../pages/test/HomePage'
 
 const router = createBrowserRouter([
   // Routes publiques (non connecté)
@@ -41,8 +40,7 @@ const router = createBrowserRouter([
   },
 
   // Routes de test / fallback
-  { path: '/homepage', element: <HomePage /> },
-  { path: '/_test-auth', element: <TestPage /> },
+  { path: '/test', element: <TestPage /> },
   { path: '*', element: <NotFoundPage /> },
 ])
 
