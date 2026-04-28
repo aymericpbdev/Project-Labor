@@ -1,6 +1,6 @@
 
 import './Footer.css'
-import logo from '../assets/labor-logo-text.svg'
+import logo from '../../assets/logo/labor-logo-text.svg'
 type FooterProps = {
   isConnected?: boolean
 }

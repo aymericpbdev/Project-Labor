@@ -1,8 +1,8 @@
 import { Outlet } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'
 import { Role } from '../types/enums'
-import Navbar from './Navbar'
-import Footer from './Footer'
+import Navbar from './Navbar/Navbar'
+import Footer from './Footer/Footer'
 import './Layout.css'
 
 function SaisonLayout() {

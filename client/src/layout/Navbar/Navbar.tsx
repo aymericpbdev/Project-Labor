@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import { Role } from '../types/enums'
+import { Role } from '../../types/enums'
 
 import './Navbar.css'
-import logo from '../assets/labor-logo-text.svg'
+import logo from '../../assets/logo/labor-logo-text.svg'
 
 type NavbarProps = {
   role: Role | null
