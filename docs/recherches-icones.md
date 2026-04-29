@@ -34,7 +34,7 @@
 | Bibliothèque | Licence | Nb icônes | Style | Lien | GitHub |
 |---|---|---|---|---|---|
 | **Phosphor Icons** ✅ | MIT | ~7 000 | 6 variantes (thin → duotone), coins arrondis, organique | [phosphoricons.com](https://phosphoricons.com/) | [phosphor-icons/react](https://github.com/phosphor-icons/react) |
-| **Tabler Icons** ✅ | MIT | ~5 500 | Trait 2px, coins arrondis, minimaliste et propre | [tabler.io/icons](https://tabler.io/icons) | [tabler/tabler-icons](https://github.com/tabler/tabler-icons) |
+| **Tabler Icons** ✅ | MIT | ~5 500 | Trait 2px, coins arrondis, minimaliste | [tabler.io/icons](https://tabler.io/icons) | [tabler/tabler-icons](https://github.com/tabler/tabler-icons) |
 | **Lucide React** | ISC | ~1 500 | Minimaliste, trait fin, coins arrondis | [lucide.dev](https://lucide.dev/icons/) | [lucide-icons/lucide](https://github.com/lucide-icons/lucide) |
 | **Heroicons** | MIT | ~300 | Géométrique et net, sobre | [heroicons.com](https://heroicons.com/) | [tailwindlabs/heroicons](https://github.com/tailwindlabs/heroicons) |
  
@@ -196,13 +196,13 @@
  
 ### Choix principal
  
-**Phosphor Icons** (MIT, ~7 000 icônes) est la bibliothèque retenue en priorité. Elle propose 6 variantes de style — thin, light, regular, bold, fill et duotone — ce qui offre une grande flexibilité selon les contextes UI : trait fin pour les labels discrets, fill ou duotone pour les éléments actifs ou mis en avant. Surtout, ses formes organiques et ses coins naturellement arrondis épousent parfaitement l'identité visuelle de LABOR : chaleureux, humain, sans rigidité technique.
+**Phosphor Icons** (MIT, ~7 000 icônes) est la bibliothèque retenue en priorité. Elle propose 6 variantes de style — thin, light, regular, bold, fill et duotone — ce qui offre une grande flexibilité selon les contextes UI : trait fin pour les labels discrets, fill ou duotone pour les éléments actifs ou mis en avant. Surtout, ses formes organiques et ses coins arrondis s'adaptent l'identité visuelle de LABOR : chaleureux, humain, sans rigidité technique.
  
 ---
  
 ### Choix complémentaire
  
-**Tabler Icons** (MIT, ~5 500 icônes) est recommandée en complément. Son trait à 2px et ses coins arrondis produisent un style minimaliste et propre, et son catalogue très large couvre bien les cas d'usage agricoles spécifiques à la plateforme : `tractor`, `plant`, `grain`, `salad`, `pig`, `tree`, `flower`…
+**Tabler Icons** (MIT, ~5 500 icônes) est recommandée en complément. Son trait à 2px et ses coins arrondis produisent un style minimaliste et propre, et son catalogue très large couvre bien les cas d'usage agricoles spécifiques à la plateforme Labor : `tractor`, `plant`, `grain`, `salad`, `pig`, `tree`, `flower`…
  
 ---
  
@@ -219,4 +219,4 @@ Les trois partagent des critères communs qui justifient leur sélection :
 - **Licence permissive** (MIT ou ISC) — aucune contrainte d'attribution, utilisables librement en production
 - **Style à coins arrondis** — cohérent avec l'esthétique organique et chaleureuse de LABOR
 - **Couverture agricole suffisante** — tractor, barn, grains, carrot, cow, wine, plant, tree… les icônes métier spécifiques à la plateforme sont disponibles dans les trois bibliothèques
-Les autres bibliothèques consultées (Feather, Remix Icon, Bootstrap Icons, Boxicons, Iconoir, etc.) ont été écartées soit pour un catalogue trop limité, soit pour un style trop générique ou trop "web app" qui ne correspond pas à l'univers agricole et humain de LABOR.
+Les autres bibliothèques consultées (Feather, Remix Icon, Bootstrap Icons, Boxicons, Iconoir, etc.) ont été écartées soit pour un catalogue trop limité, soit pour un style trop générique ou trop "web app" qui ne correspond pas à l'univers agricole de LABOR.

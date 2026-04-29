@@ -37,13 +37,13 @@
 
 ## Bibliothèques complémentaires
 
-### shadcn/ui
+### shaden/ui
 
-shadcn/ui ne s'installe pas comme une dépendance : les composants sont copiés directement dans le code et adaptés librement. Le style est défini uniquement via Tailwind CSS, ce qui donne un contrôle total sur les couleurs LABOR (Fern, Golden Orange…). Particulièrement fort sur les composants `Combobox` (idéal pour le champ `skills[]` du saisonnier), `Select` (pour `cropType`, `workSchedule`, `paymentType`), et `Date Picker`.
+shaden/ui ne s'installe pas comme une dépendance : les composants sont copiés directement dans le code et adaptés librement. Le style est défini uniquement via Tailwind CSS, ce qui donne un contrôle total sur les couleurs LABOR (Fern, Golden Orange…). Particulièrement fort sur les composants `Combobox` (idéal pour le champ `skills[]` du saisonnier), `Select` (pour `cropType`, `workSchedule`, `paymentType`), et `Date Picker`.
 
 ### Radix UI
 
-Radix UI est la base sur laquelle shadcn/ui est construit. Il peut être utilisé seul pour construire des composants sur-mesure avec le style LABOR. Zéro style par défaut, accessibilité ARIA complète. Très utile pour les composants complexes comme `Select`, `Dialog`, `Tabs` (navigation entre Farmer/SeasonalWorker), `Toggle Group` (sélection du `WorkSchedule` ou du `Role`).
+Radix UI est la base sur laquelle shaden/ui est construit. Il peut être utilisé seul pour construire des composants sur-mesure avec le style LABOR. Zéro style par défaut, accessibilité ARIA complète. Très utile pour les composants complexes comme `Select`, `Dialog`, `Tabs` (navigation entre Farmer/SeasonalWorker), `Toggle Group` (sélection du `WorkSchedule` ou du `Role`).
 
 ### React Aria Components (Adobe)
 
@@ -59,9 +59,207 @@ Conçu par Adobe pour des applis terrain avec des utilisateurs très variés, ce
 
 ## Aperçus visuels des composants
 
-> 📸 *Aperçu visuel des composants — voir les captures d'écran jointes au document.*
+> Chaque capture montre les trois variantes côte à côte : **Chakra UI** (teal), **Ant Design** (bleu), **Material UI** (bleu foncé / underline).
 
-![Aperçu composants Chakra UI, Ant Design, MUI](composants-ui.png)
+---
+
+### Input texte
+
+Champ de saisie libre. Chakra affiche une bordure arrondie teal au focus. Ant Design adopte un contour bleu fin. MUI utilise un label flottant animé au-dessus de la ligne de soulignement.
+
+![Input texte — Chakra UI, Ant Design, MUI](composants-ui/input-texte.png)
+
+---
+
+### Input password
+
+Variante du champ texte avec masquage du mot de passe et icône œil pour basculer la visibilité. Les trois libs le proposent nativement.
+
+![Authentification — Input Password](composants-ui/authentification-input-password.png)
+
+---
+
+### Authentification — Input Email
+
+Champ email utilisé à l'inscription et à la connexion. Même rendu visuel que l'input texte, avec validation du format email côté navigateur.
+
+![Authentification — Input Email](composants-ui/authentification-input-email.png)
+
+---
+
+### Select
+
+Menu déroulant pour les champs à choix unique (`cropType`, `paymentType`…). Chakra et Ant Design affichent une boîte avec flèche. MUI utilise la ligne de soulignement caractéristique du Material Design.
+
+![Select — Chakra UI, Ant Design, MUI](composants-ui/select.png)
+
+---
+
+### Annonce — Select Multiple (workSchedule)
+
+Select permettant de cocher plusieurs options simultanément. Utilisé pour `workSchedule` (FullTime, Night, Weekend…). Ant Design et MUI proposent une variante `multiple` native très complète.
+
+![Select Multiple — workSchedule](composants-ui/annonce-select-multiple-workschedule.png)
+
+---
+
+### Switch — Logement inclus
+
+Bouton bascule On/Off pour le champ `housingProvided`. Chakra et Ant Design affichent un switch horizontal coloré. MUI propose un style plus petit avec un cercle proéminent.
+
+![Switch — Chakra UI, Ant Design, MUI](composants-ui/switch.png)
+
+---
+
+### Radio group — Choix du rôle
+
+Sélection exclusive entre `Farmer` et `SeasonalWorker` à l'inscription. Chaque lib propose un style de bouton radio distinct, tous accessibles au clavier et compatibles ARIA.
+
+![Radio group — Chakra UI, Ant Design, MUI](composants-ui/radio-group.png)
+
+---
+
+### Checkbox groupe — Compétences (skills[])
+
+Sélection multiple des compétences du saisonnier (`Harvesting`, `Viticulture`, `Driving`…). Chaque case peut être cochée/décochée indépendamment.
+
+![Checkbox groupe — Chakra UI, Ant Design, MUI](composants-ui/checkbox-groupe.png)
+
+---
+
+### Profil Saisonnier — Checkbox skills[] (détail)
+
+Vue dédiée au profil saisonnier avec disposition en grille des compétences disponibles.
+
+![Profil Saisonnier — Checkbox skills[]](composants-ui/profil-saisonnier-checkbox-skills.png)
+
+---
+
+### Statuts — Badge / Tag / Chip
+
+Pastilles colorées indiquant le statut d'une annonce (`Draft`, `Active`, `Closed`) ou d'une candidature (`Pending`, `UnderReview`, `Accepted`, `Rejected`). Code couleur : vert = actif/accepté, orange = en attente, rouge = refusé, gris = fermé/brouillon, bleu = en cours.
+
+![Statuts — Chakra UI, Ant Design, MUI](composants-ui/statuts--badge---tag---chip.png)
+
+---
+
+### Alertes
+
+Bandeaux informatifs contextuels en trois niveaux : **erreur** (rouge, validation / erreur API), **succès** (vert, confirmation d'action), **info** (bleu, message contextuel). Présents dans les trois libs.
+
+![Alertes — Chakra UI, Ant Design, MUI](composants-ui/alertes.png)
+
+---
+
+### Modal — Confirmation de candidature
+
+Fenêtre de dialogue modale pour confirmer ou retirer une candidature. Contient un titre, un message de confirmation, et deux boutons (Annuler / Confirmer). Chakra utilise `Dialog`, Ant Design `Modal`, MUI `Dialog`.
+
+![Modal — Chakra UI, Ant Design, MUI](composants-ui/modal--confirmation-de-candidature.png)
+
+---
+
+### Toast / Notification éphémère
+
+Notification courte qui apparaît en bas ou en haut de l'écran pendant quelques secondes. Utilisée pour les retours d'action (candidature envoyée, profil mis à jour…). Chakra : `useToast`. Ant Design : `message`. MUI : `Snackbar`.
+
+![Toast — Chakra UI, Ant Design, MUI](composants-ui/toast---notification-éphémère.png)
+
+---
+
+### DatePicker Range — startDate / endDate
+
+Sélecteur de période avec date de début et date de fin dans un seul composant. Utilisé pour les dates de mission côté annonce, et les disponibilités côté saisonnier. Ant Design propose le `RangePicker` le plus complet. MUI Date Pickers X est puissant mais nécessite une licence pro pour certaines fonctionnalités avancées.
+
+![DatePicker range — Ant Design, MUI](composants-ui/datepicker-range--startdate---enddate.png)
+
+---
+
+### Profil Saisonnier — DatePicker Range (availabilityStart / End)
+
+Vue dédiée au contexte saisonnier : sélection de la plage de disponibilité. Mêmes composants que ci-dessus, contexte différent.
+
+![DatePicker — availabilityStart / availabilityEnd](composants-ui/profil-saisonnier-datepicker-range-availabilitystart-end.png)
+
+---
+
+### Input nombre — numberOfPositions
+
+Champ numérique avec boutons +/− pour saisir le nombre de postes disponibles. Chakra : `NumberInput`. Ant Design : `InputNumber`. MUI : `TextField` avec `type="number"`.
+
+![Input nombre — Chakra UI, Ant Design, MUI](composants-ui/input-nombre--numberofpositions.png)
+
+---
+
+### Input montant — payAmount + paymentType
+
+Champ de saisie du salaire combiné à un select pour la périodicité (`Hourly`, `Weekly`, `Monthly`). Rendu en groupe inline : montant à gauche, type de paiement à droite.
+
+![Input montant — Chakra UI, Ant Design, MUI](composants-ui/input-montant--payamount-+-paymenttype.png)
+
+---
+
+### Profil Agriculteur — Input texte (farmName, siret…)
+
+Champs texte spécifiques au profil agriculteur : nom de l'exploitation, SIRET, téléphone professionnel, ville, code postal, département.
+
+![Profil Agriculteur — Input texte](composants-ui/profil-agriculteur-input-texte-farmname-siret.png)
+
+---
+
+### Profil Agriculteur — Card exploitation (Farm)
+
+Card affichant le résumé d'une exploitation agricole : nom, localisation, type de culture, et lien vers les annonces associées.
+
+![Card exploitation — Farm](composants-ui/profil-agriculteur-card-exploitation-farm.png)
+
+---
+
+### Card — Annonce / Candidature
+
+Card de résumé pour une `JobListing` dans les résultats de recherche. Contient : titre du poste, exploitation, localisation, dates, salaire, statut et bouton d'action. Même structure pour une `Application` dans la liste des candidatures.
+
+![Card — Chakra UI, Ant Design, MUI](composants-ui/card--annonce---candidature.png)
+
+---
+
+### Annonce — Card JobListing (détail)
+
+Vue dédiée avec toutes les informations de l'annonce : skills requis, logement inclus, nombre de postes, type de contrat.
+
+![Annonce — Card JobListing](composants-ui/annonce-card-joblisting.png)
+
+---
+
+### Candidature — Card Application
+
+Card récapitulative d'une candidature avec statut coloré, nom de l'annonce, exploitation, et date de candidature.
+
+![Card Application](composants-ui/candidature-card-application.png)
+
+---
+
+### Bottom navigation — Mobile
+
+Barre de navigation en bas d'écran pour mobile avec 3 à 4 onglets (Home / Offres / Profil). MUI propose le composant `BottomNavigation` le plus natif. Chakra utilise `Tabs`. Ant Design utilise `Menu`.
+
+![Bottom navigation — Chakra UI, Ant Design, MUI](composants-ui/bottom-navigation--mobile.png)
+
+---
+
+### Top bar — En-tête de page
+
+Barre supérieure avec bouton retour, titre de la page courante, et action optionnelle à droite. MUI : `AppBar`. Ant Design : `PageHeader` (déprécié v5, remplacé par layout custom).
+
+![Top bar](composants-ui/top-bar.png)
+
+---
+
+### Breadcrumb
+
+Fil d'Ariane pour la navigation hiérarchique : `Accueil > Offres > Détail annonce`. Les trois libs le proposent nativement avec un séparateur configurable.
+
+![Breadcrumb — Chakra UI, Ant Design, MUI](composants-ui/breadcrumb.png)
 
 ---
 
@@ -161,7 +359,7 @@ Conçu par Adobe pour des applis terrain avec des utilisateurs très variés, ce
 
 ### Recommandation 1 — Chakra UI ✅
 
-Chakra UI dispose d'un fichier de configuration unique où l'on peut définir une seule fois toutes les règles visuelles de LABOR — les couleurs, les polices, les coins arrondis. Une fois ce fichier rempli, tous les composants de l'app les appliquent automatiquement sans répétition dans le code. L'accessibilité est intégrée par défaut, ce qui est important pour une app terrain destinée à des publics variés (maraîchers, étudiants, saisonniers).
+Chakra UI dispose d'un fichier de configuration unique où l'on peut définir une seule fois toutes les règles visuelles de LABOR — les couleurs, les polices, les coins arrondis. Une fois ce fichier rempli, tous les composants de l'app les appliquent automatiquement sans répétition dans le code. L'accessibilité est intégrée par défaut, ce qui est important pour une app terrain destinée à des publics variés (maraîchers, étudiants, saisonniers, etc).
 
 ### Recommandation 2 — Ant Design (DatePicker uniquement)
 
