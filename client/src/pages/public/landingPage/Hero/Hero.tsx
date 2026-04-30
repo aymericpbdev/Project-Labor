@@ -1,4 +1,5 @@
 import Button from '../../../../components/ui/Button/Button'
+import heroIMG from '../../../../assets/img-landingpage/heroIMG.jpg'
 
 import './Hero.css'
 
@@ -6,6 +7,7 @@ function Hero() {
   return (
     <section className="hero">
       {/* Image de fond */}
+      <img className='hero__image' src={heroIMG} alt="" />
       <div className="hero__overlay" />
 
       <div className="hero__content">
@@ -20,8 +22,8 @@ function Hero() {
         </p>
 
         <div className="hero__ctas">
-          <Button variant="primary" size='m'>Je suis agriculteur</Button>
-          <Button variant="secondary" size='m'>Je suis saisonnier</Button>
+          <Button variant="primary" size='l'>Je suis agriculteur</Button>
+          <Button variant="secondary" size='l'>Je suis saisonnier</Button>
         </div>
       </div>
     </section>
