@@ -22,6 +22,7 @@ function Hero() {
         </p>
 
         <div className="hero__ctas">
+            {/*TODO ajouter les liens */}
           <Button variant="primary" size='l'>Je suis agriculteur</Button>
           <Button variant="secondary" size='l'>Je suis saisonnier</Button>
         </div>

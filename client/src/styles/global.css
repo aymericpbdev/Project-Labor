@@ -8,6 +8,7 @@
     --labor-sage: #7A9E50;
     --labor-orange: #F4A226;
     --labor-cream: #EDE8D0;
+    --labor-cream-soft: #ede8d044;
     --labor-gradient-sun: linear-gradient(to bottom, #FAD961, #F76B1C);
 
 
@@ -22,6 +23,7 @@
     /* Fonds */
     --labor-color-bg: #fff;
     --labor-color-bg-soft: var(--labor-cream) ; 
+    --labor-color-bg-soft-2: var(--labor-cream-soft);
     --labor-color-bg-dark: var(--labor-charcoal) ;
     --labor-color-bg-highlight:var(--labor-orange) ;
 
