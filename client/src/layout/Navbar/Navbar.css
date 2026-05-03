@@ -1,0 +1,175 @@
+/* HEADER / NAVBAR*/
+
+   .header {
+    background-color: var(--labor-color-bg-dark);
+  }
+  
+  .navbar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    max-width: 1fr;
+    margin: 0 auto;
+    padding: var(--labor-spacing-m) var(--labor-spacing-l);
+  }
+  
+  /* Logo */
+  
+  .navbar__logo {
+    margin-right: auto;
+  }
+  
+  /* Liens de navigation (version publique) */
+  
+  .navbar__links {
+    display: flex;
+    align-items: center;
+    gap: var(--labor-spacing-xl);
+  }
+  
+  .navbar__link {
+    color: var(--labor-color-text-light);
+    text-decoration: none;
+    font-size: var(--labor-font-size-m);
+    font-weight: var(--labor-font-weight-medium);
+    transition: color 0.2s;
+  }
+  
+  .navbar__link:hover {
+    color: var(--labor-orange);
+  }
+
+  
+  /* Liens de navigation (version connectée — pilule)*/
+  
+  .navbar__links--connected {
+    background-color: var(--labor-cream);
+    border-top-left-radius: var(--labor-radius-full);
+    border-bottom-left-radius: var(--labor-radius-full);
+    padding: var(--labor-spacing-s) var(--labor-spacing-l);
+    gap: var(--labor-spacing-m);
+  }
+  
+  .navbar__links--connected .navbar__link {
+    color: var(--labor-charcoal);
+    font-weight: var(--labor-font-weight-semibold);
+    border-radius: var(--labor-radius-full);
+    padding: var(--labor-spacing-s) var(--labor-spacing-l);
+    gap: var(--labor-spacing-xs);
+  }
+  
+  .navbar__links--connected .navbar__link:hover {
+    background-color: var(--labor-sage);
+  }
+  
+  .navbar__link--icon {
+    font-size: var(--labor-font-size-l);
+    line-height: 1;
+  }
+  
+  /* Boutons auth (version publique — pilule)*/
+  
+  .navbar__auth {
+    display: flex;
+    align-items: center;
+    background-color: var(--labor-cream);
+    border-radius: var(--labor-radius-full);
+    padding: var(--labor-spacing-xs);
+  }
+  
+  .navbar__btn {
+    text-decoration: none;
+    font-size: var(--labor-font-size-s);
+    font-weight: var(--labor-font-weight-semibold);
+    padding: var(--labor-spacing-s) var(--labor-spacing-l);
+    border-radius: var(--labor-radius-full);
+    color: var(--labor-charcoal);
+    background-color: transparent;
+    transition: background-color 0.2s;
+  }
+  
+  .navbar__btn:hover {
+  background-color: var(--labor-orange);
+  color: var(--labor-color-text);
+  }
+  
+  /* Profil + dropdown (version connectée) */
+  
+  .navbar__profile {
+    position: relative;
+  }
+  
+  .navbar__profile-btn {
+    display: flex;
+    align-items: center;
+    height: 56px;
+    gap: var(--labor-spacing-s);
+    background-color: var(--labor-cream);
+    border: none;
+    cursor: pointer;
+    padding: var(--labor-spacing-s) var(--labor-spacing-m);
+    border-top-right-radius: var(--labor-radius-full);
+    border-bottom-right-radius: var(--labor-radius-full);
+    transition: background-color 0.2s;
+  }
+  
+  .navbar__profile-btn:hover {
+    background-color: var(--labor-sage);
+  }
+  
+  .navbar__profile-name {
+    color: var(--labor-color-text);
+    font-size: var(--labor-font-size-s);
+    font-weight: var(--labor-font-weight-medium);
+  }
+  
+  
+  .navbar__profile-icon {
+    font-size: var(--labor-font-size-l);
+  }
+  
+  /* Dropdown menu */
+  .navbar__dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: var(--labor-spacing-s);
+    background-color: var(--labor-orange);
+    border-radius: var(--labor-radius-l);
+    padding: var(--labor-spacing-s) var(--labor-spacing-l);
+    min-width: 180px;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .navbar__dropdown-item {
+    color: var(--labor-charcoal);
+    text-decoration: none;
+    font-size: var(--labor-font-size-s);
+    font-weight: var(--labor-font-weight-medium);
+    padding: var(--labor-spacing-s) var(--labor-spacing-l);
+    text-align: right;
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.2s;
+  }
+  
+  .navbar__dropdown-item:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+  
+  .navbar__dropdown-item--logout {
+    font-weight: var(--labor-font-weight-bold);
+  }
+
+
+  .header__accent-line {   
+    height: 4px;
+    background: var(--labor-color-border-gradient);
+  }
+  .header__accent-line--connected {
+    background: var(--labor-color-border-gradient-green);
+  }
