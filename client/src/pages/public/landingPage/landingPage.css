@@ -1,0 +1,24 @@
+.landing__stats {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    margin: 70px;
+}
+
+.landing__stat {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.landing__stat-value {
+    font-family: var(--labor-font-heading);
+    font-size: var(--labor-font-size-3xl);
+    font-weight: var(--labor-font-weight-bold);
+}
+
+.landing__stat-label {
+    font-family: var(--labor-font-body);
+    font-size: var(--labor-font-size-xl);
+}

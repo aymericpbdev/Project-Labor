@@ -7,12 +7,32 @@ import FinalCTA from './FinalCTA/FinalCTA'
 import './landingPage.css'
 
 function LandingPage() {
+
+  // Pour l'instant, valeurs en dur
+  // TODO : remplacer par un appel API via MSW quand le service stats sera prêt
+  const stats = {
+    agriculteurs: 124,
+    saisonniers: 389,
+    annonces: 67,
+  } 
+
   return (
     <main className="landing">
       <Hero />
 
       <section className="landing__stats">
-        Stats
+        <div className="landing__stat">
+          <span className="landing__stat-value">{stats.agriculteurs}</span>
+          <span className="landing__stat-label">agriculteurs</span>
+        </div>
+        <div className="landing__stat">
+          <span className="landing__stat-value">{stats.saisonniers}</span>
+          <span className="landing__stat-label">saisonniers</span>
+        </div>
+        <div className="landing__stat">
+          <span className="landing__stat-value">{stats.annonces}</span>
+          <span className="landing__stat-label">annonces</span>
+        </div>
       </section>
 
       <HowItWorks />
