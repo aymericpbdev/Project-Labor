@@ -15,19 +15,22 @@ const annoncesMock = [
 function LatestJobs() {
   return (
     <section className="latest-jobs">
-      <h2 className="latest-jobs__title">Dernières annonces</h2>
-      <div className="latest-jobs__list">
-        {annoncesMock.map((annonce, index) => (
-          <AnnonceCardPublic
-            key={index}
-            titre={annonce.titre}
-            departement={annonce.departement}
-            postesRestants={annonce.postesRestants}
-            cropType={annonce.cropType}
-            onClick={() => alert('Cliqué — redirige vers connexion')}
-          />
-        ))}
+      <div className='latest-jobs__container'>
+        <h2 className="latest-jobs__title">Dernières annonces</h2>
+        <div className="latest-jobs__list">
+          {annoncesMock.map((annonce, index) => (
+           <AnnonceCardPublic
+              key={index}
+              titre={annonce.titre}
+              departement={annonce.departement}
+              postesRestants={annonce.postesRestants}
+              cropType={annonce.cropType}
+              onClick={() => alert('Cliqué — redirige vers connexion')}
+            />
+           ))}
+        </div>
       </div>
+      
     </section>
   )
 }

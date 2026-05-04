@@ -1,0 +1,34 @@
+/* LATEST JOBS — section "Dernières annonces" de la landing
+   Empilement vertical de 5 cards d'annonces publiques.
+   À refacto en carrousel horizontal dans une prochaine itération. */
+
+   .latest-jobs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .latest-jobs__container {
+    width: 80vw;
+    border-radius: var(--labor-radius-l);
+    padding: var(--labor-spacing-3xl) var(--labor-spacing-xl);
+    background: var(--labor-color-bg-soft-2);
+  }
+
+  
+  /* CONTENEUR CENTRÉ */
+  .latest-jobs__list {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* TITRE */
+  .latest-jobs__title {
+    max-width: 900px;
+    margin: 0 auto var(--labor-spacing-l);
+    font-family: var(--labor-font-heading);
+    font-size: var(--labor-font-size-2xl);
+    font-weight: var(--labor-font-weight-bold);
+    color: var(--labor-charcoal);
+  }
