@@ -1,6 +1,8 @@
 import './HowItWorks.css'
 
 function HowItWorks() {
+  // TODO : remplacer les SVG (=TODO, icone épis) par les vraies icônes (à définir avec la v2 du design)
+  
   return (
     <section className="how-it-works">
       <h2 className="how-it-works__title">Comment ça marche</h2>

@@ -1,5 +1,7 @@
+import { Link } from 'react-router-dom'
 import Button from '../../../../components/ui/Button/Button'
 import heroIMG from '../../../../assets/img-landingpage/heroIMG.jpg'
+
 
 import './Hero.css'
 
@@ -22,9 +24,12 @@ function Hero() {
         </p>
 
         <div className="hero__ctas">
-            {/*TODO ajouter les liens */}
-          <Button variant="primary" size='l'>Je suis agriculteur</Button>
-          <Button variant="secondary" size='l'>Je suis saisonnier</Button>
+          <Link to="/inscription/agriculteur" className="hero__cta-link">
+            <Button variant="primary">Je suis agriculteur</Button>
+          </Link>
+          <Link to="/inscription/saisonnier" className="hero__cta-link">
+            <Button variant="secondary">Je suis saisonnier</Button>
+          </Link>
         </div>
       </div>
     </section>

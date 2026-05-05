@@ -48,3 +48,8 @@
     background-color: var(--labor-color-bg);
 }
 
+.final-cta__cta-link {
+    text-decoration: none;
+    color: inherit;
+    display: inline-block;
+  }
