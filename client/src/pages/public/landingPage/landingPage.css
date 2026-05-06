@@ -22,3 +22,19 @@
     font-family: var(--labor-font-body);
     font-size: var(--labor-font-size-xl);
 }
+
+@media (max-width: 768px) {
+    .landing__stats {
+        gap: 30px;
+        padding: 50px;
+        margin-top: 30px;
+    }
+
+    .landing__stat-value  {
+        font-size: var(--labor-font-size-2xl);
+    }
+
+    .landing__stat-label {
+        font-size: var(--labor-font-size-l);
+    }
+}
