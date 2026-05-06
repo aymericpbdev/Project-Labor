@@ -60,11 +60,19 @@
   
   /* RESPONSIVE */
   @media (max-width: 768px) {
-    .annonce-public__title {
-      font-size: var(--labor-font-size-m);
+    .annonce-card {
+      flex-direction: column;
+      min-height: auto;
+      margin: 0; 
     }
   
-    .annonce-public__count-value {
-      font-size: var(--labor-font-size-l);
+    .annonce-card__photo {
+      position: static;
+      width: 100%;
+      height: 140px;
+    }
+  
+    .annonce-card__content {
+      margin-left: 0;
     }
   }

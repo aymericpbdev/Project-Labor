@@ -32,3 +32,20 @@
     font-weight: var(--labor-font-weight-bold);
     color: var(--labor-charcoal);
   }
+
+  @media (max-width: 768px) {
+    .latest-jobs {
+      padding: var(--labor-spacing-xl) var(--labor-spacing-m);
+    }
+  
+    .latest-jobs__title {
+      font-size: var(--labor-font-size-xl);
+      max-width: 100%;
+      margin: 0 auto var(--labor-spacing-m);
+    }
+  
+    .latest-jobs__list {
+      max-width: 100%;
+      gap: var(--labor-spacing-s);
+    }
+  }

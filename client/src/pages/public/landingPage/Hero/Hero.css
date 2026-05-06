@@ -67,6 +67,11 @@
 
     .hero__title {
         margin-top: 60px;
+        font-size: var(--labor-font-size-xl);
+    }
+
+    .hero__subtitle {
+        font-size: var(--labor-font-size-m);
     }
 
     .hero__ctas  {
@@ -78,17 +83,28 @@
 
   @media (max-width: 380px) {
 
+    .hero__image {
+        height: 65vh;
+    }
+
+    .hero__content {
+        height: 65vh;
+    }
+
+    .hero__overlay {
+        height: 65vh;
+    }
+
     .hero__title {
-        margin-top: 60px;
-        font-size: var(--labor-font-size-xl);
+        font-size: var(--labor-font-size-l);
     }
     .hero__subtitle {
-        font-size: var(--labor-font-size-m);
+        font-size: var(--labor-font-size-s);
     }
 
     .hero__ctas  {
         gap: 30px;
-        margin-top: 60px;
+        margin-top: 40px;
         flex-direction: column;
     }
   }

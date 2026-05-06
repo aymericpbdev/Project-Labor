@@ -8,8 +8,6 @@ const annoncesMock = [
     { titre: 'Castrage maïs', departement: 'Landes', postesRestants: 2, cropType: 'Crop_Cereals' as const },
     { titre: 'Récolte de tomates', departement: 'Tarn-et-Garonne', postesRestants: 4, cropType: 'Crop_Vegetables' as const },
     { titre: 'Cueillette de prunes', departement: 'Lot-et-Garonne', postesRestants: 1, cropType: 'Crop_Fruits' as const },
-    { titre: 'Betails', departement: 'Gers', postesRestants: 3, cropType: 'Crop_Livestock' as const },
-    { titre: 'Taille de vigne', departement: 'Hérault', postesRestants: 5, cropType: 'Crop_Vineyard' as const },
   ]
 
 function LatestJobs() {
