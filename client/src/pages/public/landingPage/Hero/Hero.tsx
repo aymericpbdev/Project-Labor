@@ -25,10 +25,10 @@ function Hero() {
 
         <div className="hero__ctas">
           <Link to="/inscription/agriculteur" className="hero__cta-link">
-            <Button variant="primary">Je suis agriculteur</Button>
+            <Button variant="primary"size='l'>Je suis agriculteur</Button>
           </Link>
           <Link to="/inscription/saisonnier" className="hero__cta-link">
-            <Button variant="secondary">Je suis saisonnier</Button>
+            <Button variant="secondary" size='l' >Je suis saisonnier</Button>
           </Link>
         </div>
       </div>

@@ -173,3 +173,9 @@
   .header__accent-line--connected {
     background: var(--labor-color-border-gradient-green);
   }
+
+  @media (max-width: 768px) {
+    .navbar__links {
+      display: none;
+    }
+  }

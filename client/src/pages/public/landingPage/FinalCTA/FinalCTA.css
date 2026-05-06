@@ -53,3 +53,14 @@
     color: inherit;
     display: inline-block;
   }
+
+
+  @media (max-width: 768px) {
+    .final-cta__image {
+        height: 30%;
+        position: absolute;
+        left: 12%;
+        z-index: -5;
+        opacity: 30%;
+    }
+  }
