@@ -75,3 +75,20 @@
     }
 
   }
+
+  @media (max-width: 380px) {
+
+    .hero__title {
+        margin-top: 60px;
+        font-size: var(--labor-font-size-xl);
+    }
+    .hero__subtitle {
+        font-size: var(--labor-font-size-m);
+    }
+
+    .hero__ctas  {
+        gap: 30px;
+        margin-top: 60px;
+        flex-direction: column;
+    }
+  }
