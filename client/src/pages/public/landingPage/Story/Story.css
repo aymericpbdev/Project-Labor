@@ -85,3 +85,40 @@ La carte chevauche l'image sur environ 10% de la largeur. */
     opacity: 0.8;
     margin: 0;
   }
+
+  @media (max-width: 900px) {
+    .story {
+      padding: 0;
+    }
+ 
+    .story--right .story__image {
+      grid-column: 7 / 13;
+    }
+    .story--right .story__card {
+      grid-column: 1 / 9;
+    }
+
+    .story--left .story__image {
+      grid-column: 1 / 7;
+    }
+    .story--left .story__card {
+      grid-column: 5 / 13;
+    }
+  
+    .story__image {
+      height: 500px;
+      border-radius: 0;
+    }
+  
+    .story__card {
+      height: 500px;
+      border-radius: 0;
+      opacity: 100%;
+    }
+
+    .story__text {
+      padding-top: 40px;
+      font-size: var(--labor-font-size-xs);
+    }
+
+  }
