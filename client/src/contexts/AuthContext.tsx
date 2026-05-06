@@ -11,69 +11,105 @@
  * Une fois le vrai backend + MSW prêt, on remplacera le mock par un vrai appel API.
  */
 
-import { createContext, useContext,  useState, useEffect } from 'react';
-import type { ReactNode } from 'react';
-import type { User } from '../types/user.ts';
-import { Role } from '../types/enums.ts';
+import { createContext, useContext, useState, useEffect } from 'react'
+import type { ReactNode } from 'react'
+import type { User } from '../types/user'
+// import { Role } from '../types/enums'
+import {
+  login as loginService,
+  logout as logoutService,
+  register as registerService,
+  forgotPassword as forgotPasswordService,
+  resetPassword as resetPasswordService,
+  fetchCurrentUser,
+} from '../services/authService'
 
 interface AuthContextType {
-  currentUser: User | null;
-  role: User['role'] | null;
-  isLoading: boolean;
-  login: (email: string, password: string) => Promise<void>;
-  logout: () => void;
+  currentUser: User | null
+  role: User['role'] | null
+  isLoading: boolean
+  login: (email: string, password: string) => Promise<void>
+  logout: () => void
+  register: (
+    email: string,
+    password: string,
+    firstName: string,
+    lastName: string,
+    role: string
+  ) => Promise<void>
+  forgotPassword: (email: string) => Promise<void>
+  resetPassword: (token: string, newPassword: string) => Promise<void>
 }
 
-const mockCurrentUser: User = {
-  id: 'user-001',
-  firstName: 'Jean',
-  lastName: 'Dupont',
-  email: 'jean.dupont@example.com',
-  role: Role.Farmer,  // changer de role : Role.SeasonalWorker ; Role.Farmer ; setCurrentUser(null)
-  createdAt: new Date().toISOString(),
-  updatedAt: new Date().toISOString(),
-};
-
-const AuthContext = createContext<AuthContextType | undefined>(undefined);
+const AuthContext = createContext<AuthContextType | undefined>(undefined)
 
 export function AuthProvider({ children }: { children: ReactNode }) {
-  const [currentUser, setCurrentUser] = useState<User | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
-  
+  const [currentUser, setCurrentUser] = useState<User | null>(null)
+  const [isLoading, setIsLoading] = useState(true)
+
   useEffect(() => {
-    setTimeout(() => {
-      setCurrentUser(mockCurrentUser);
-      setIsLoading(false);
-    }, 600);
-  }, []);
+    async function initAuth() {
+      const user = await fetchCurrentUser()
+      setCurrentUser(user)
+      setIsLoading(false)
+    }
+    initAuth()
+  }, [])
 
-  const role = currentUser?.role ?? null;
-  
-  const login = async (email: string, password: string) => {
-    if (email === 'test@example.com' && password === 'password123') {
-      setCurrentUser(mockCurrentUser);
-    } else {
-      throw new Error('Identifiants incorrects');
-   }
-  };
+  const role = currentUser?.role ?? null
 
-  const logout = () => {
-    setCurrentUser(null);
-  };
+  const login = async (email: string, password: string): Promise<void> => {
+    const user = await loginService(email, password)
+    setCurrentUser(user)
+  }
+
+  const logout = (): void => {
+    logoutService()
+    setCurrentUser(null)
+  }
+
+  const register = async (
+    email: string,
+    password: string,
+    firstName: string,
+    lastName: string,
+    role: string
+  ): Promise<void> => {
+    const user = await registerService(email, password, firstName, lastName, role)
+    setCurrentUser(user)
+  }
+
+  const forgotPassword = async (email: string): Promise<void> => {
+    await forgotPasswordService(email)
+  }
+
+  const resetPassword = async (
+    token: string,
+    newPassword: string
+  ): Promise<void> => {
+    await resetPasswordService(token, newPassword)
+  }
 
   return (
-    <AuthContext.Provider value={{ currentUser, role, isLoading, login, logout }}>
+    <AuthContext.Provider value={{
+      currentUser,
+      role,
+      isLoading,
+      login,
+      logout,
+      register,
+      forgotPassword,
+      resetPassword,
+    }}>
       {children}
     </AuthContext.Provider>
-  );
+  )
 }
 
-export function useAuth() {
-  const context = useContext(AuthContext);
+export const useAuth = () => {
+  const context = useContext(AuthContext)
   if (context === undefined) {
-    throw new Error('useAuth() doit être utilisé à l’intérieur d’un AuthProvider');
+    throw new Error("useAuth() doit être utilisé à l'intérieur d'un AuthProvider")
   }
-  return context;
-};
-//erreurs ici c'est un warning d'eslint React Fast Refresh n'aime pas qu'un fichier .tsx exporte à la fois un composant (AuthProvider) et une fonction non-composant (useAuth).
-//solution passer use auth dans un autre fichier (à voir)
+  return context
+}

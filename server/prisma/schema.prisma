@@ -69,13 +69,14 @@ enum WorkSchedule {
 
 // ─── User ───
 model User {
-  id           String  @id @default(uuid())
-  email        String  @unique
-  passwordHash String
-  role         Role
-  firstName    String
-  lastName     String
-  phoneNumber  String?
+  id              String    @id @default(uuid())
+  email           String    @unique
+  emailVerifiedAt DateTime?
+  passwordHash    String
+  role            Role
+  firstName       String
+  lastName        String
+  phoneNumber     String?
 
   // Relations
   farmer         Farmer?
