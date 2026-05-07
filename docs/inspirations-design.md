@@ -31,6 +31,8 @@
 
 **Lien :** [hellowork.com](https://www.hellowork.com/)
 
+![Hellowork — résultats de recherche](images/inspirations/hellowork-resultats.jpg)
+
 **Ce qui est bien fait :**  
 La barre de recherche en haut rappelle en permanence ce qui a été cherché ("Saisonnier Agricole / CDD"). L'utilisateur sait toujours où il en est.  
 Les filtres ("Contrats", "Salaire", "Super recruteur") sont sur une seule ligne scrollable, avec des pastilles bleues qui signalent les filtres actifs. Pas besoin de savoir lire un menu — un point coloré suffit.  
@@ -45,6 +47,7 @@ La deuxième carte utilise une photo de terrain (engin agricole). Ça parle imm�
 
 **Lien :** [indeed.fr](https://www.indeed.fr/)
 
+![Indeed — fiche offre d'emploi](images/inspirations/indeed-fiche-offre.jpg)
 
 **Ce qui est bien fait :**  
 Les 3 infos décisives sont empilées verticalement avec des icônes : salaire (12,02 €/h), horaires (temps plein, lundi au vendredi), lieu (22640 Plestan). Un saisonnier qui consulte en 10 secondes dans son champ a sa réponse sans scroller.  
@@ -59,6 +62,7 @@ La description est tronquée avec "Afficher plus" — le texte long ne bloque pa
 
 **Lien :** [allovoisins.com](https://www.allovoisins.com/)
 
+![AlloVoisins — création de demande](images/inspirations/allovoisins-creation-demande.jpg)
 
 **Ce qui est bien fait :**  
 Tout tient sur un seul écran scrollable : texte libre, photos, choix particulier/pro, carte, bouton. Pas de pagination, pas d'étapes — c'est publié en 30 secondes.  
@@ -75,6 +79,7 @@ Le "Délai estimé avant première réponse" rassure avant même de publier : qu
 
 **Lien :** [habitatpresto.com](https://www.habitatpresto.com/)
 
+![Habitatpresto — formulaire guidé par étapes](images/inspirations/creation-demande-prestation.jpg)
 
 **Ce qui est bien fait :**  
 La barre de progression en haut (colorée en orange/gris) montre visuellement "Étape 1 : Type de travaux". L'utilisateur sait combien il reste à faire et ne se sent jamais perdu.  
@@ -89,6 +94,7 @@ Le hero affiche la réassurance immédiatement : "5 devis gratuits en 48h", "500
 
 **Lien :** [adecco.fr](https://www.adecco.fr/adecco-et-moi/)
 
+![Adecco & Moi — dashboard mission](images/inspirations/adecco-mission.jpg)
 
 **Ce qui est bien fait :**  
 L'accueil salue l'utilisateur par son prénom ("Bonjour, Mohamed 👋"). C'est un détail, mais pour un intérimaire qui utilise beaucoup de plateformes impersonnelles, ça change le ton.  
@@ -105,6 +111,7 @@ La bottom navigation à 4 onglets (Accueil, Offres, Missions, Profil) est stable
 
 **Lien :** [welcometothejungle.com](https://www.welcometothejungle.com/fr/jobs)
 
+![Welcome to the Jungle — fiche offre](images/inspirations/wttj-offre-d-emploi.jpg)
 
 **Ce qui est bien fait :**  
 Le logo de l'entreprise et son nom sont en premier — l'identité de l'employeur passe avant le titre du poste. Pour un saisonnier qui choisit autant un lieu qu'un emploi, savoir chez qui on va compter.  
@@ -120,6 +127,7 @@ La barre fixe en bas avec "Postuler" (jaune, bien visible) et "Sauvegarder" donn
 
 **Lien :** [jobagri.com](https://www.jobagri.com/)
 
+![Jobagri — recherche d'offres](images/inspirations/jobagri-recherche-offre.jpg)
 
 **Ce qui est bien fait :**  
 Les onglets par type de contrat (CDI, CDD, Saisonnier, Stage, Alternance) sont affichés horizontalement dès l'écran de recherche. Un saisonnier tape sur son onglet et ne voit que ce qui le concerne.  
@@ -134,6 +142,7 @@ Le bouton "Postuler" vert est visible directement sur chaque carte, à côté du
 
 **Lien :** [anefa.org/metiers](https://www.anefa.org/metiers/)
 
+![ANEFA — carrousel métiers](images/inspirations/anefa-page-accueil-carroussel.jpg)
 
 **Ce qui est bien fait :**  
 Les métiers sont présentés sous forme de cartes photo plein cadre avec le titre du métier et le secteur en overlay. "Agent de conditionnement arboricole / Arboriculture", "Maréchal-ferrant / Élevage équin" — c'est visuel, concret, et ça montre des vrais gens au travail.  
@@ -148,6 +157,7 @@ Chaque carte a un bouton play (▶) qui laisse supposer une vidéo ou fiche dét
 
 **Lien :** [anefa.org](https://www.anefa.org/)
 
+![Jobopré — carte géolocalisée](images/inspirations/jobopre-carte.jpg)
 
 **Ce qui est bien fait :**  
 La carte est l'écran principal. Les offres sont représentées par des pictos colorés selon le type de production. L'utilisateur comprend ce qui est disponible autour de lui sans lire.  
@@ -162,6 +172,7 @@ La fiche offre donne directement le numéro de téléphone de l'exploitant. Pas 
 
 **Lien :** [lagriculture-recrute.org](https://www.lagriculture-recrute.org/)
 
+![L'Agriculture recrute — accueil](images/inspirations/lagriculture-recrute-accueil.jpg)
 
 **Ce qui est bien fait :**  
 Les chiffres clés sont la première chose visible : "64 047 emplois", "17 450 entreprises", "100+ métiers". Pour quelqu'un qui se demande "est-ce qu'il y a vraiment du travail dans l'agriculture ?", la réponse est immédiate.  
@@ -176,10 +187,20 @@ La navigation par région avec compteur d'offres (Nouvelle-Aquitaine : 847, Occi
 
 **Lien :** [travaux.com](https://www.travaux.com/)
 
+![Travaux.com — formulaire de publication](images/inspirations/travaux.com-formulaire-publication.jpg)
+
 **Ce qui est bien fait :**  
 Un champ libre en premier. Avant toute question, l'utilisateur décrit son besoin avec ses mots. Un exploitant qui recherche une personne pour les vendanges n'a pas besoin de trouver la bonne catégorie dans un menu.  
 Le délai de réponse est annoncé. Celui qui publie sait ce qui se passe après. Aucun doute, pas d'attente.  
 Le formulaire filtre pour les deux côtés. Les questions posées sont celles dont les professionnels ont besoin pour décider s'ils répondent. Un saisonnier qui voit une offre claire sait de suite si l'annonce l'intéresse.
+
+**Type d'écran :** Page d'accueil
+
+![Travaux.com — travaux populaires](images/inspirations/compteur-carte-offres.jpg)
+
+**Ce qui est bien fait :**  
+Le compteur de professionnels par métier ("34 765 plaquistes en France", "31 631 peintres") donne immédiatement une preuve sociale. L'utilisateur voit qu'il y a du monde sur la plateforme avant même de poster — ça répond à la question "est-ce que quelqu'un va me répondre ?". C'est le même pattern que StarOfService ("X professionnels proches de chez vous") et L'Agriculture recrute ("64 047 emplois").
+L'entrée par le métier illustré plutôt que par une catégorie abstraite. Les cartes montrent des vrais pros au travail avec un titre simple (Plâtre, Peinture, Plomberie). Quelqu'un qui ne connaît pas le nom exact de son besoin le reconnaît en image — même principe que le carrousel ANEFA.
 
 ---
 
@@ -189,10 +210,20 @@ Le formulaire filtre pour les deux côtés. Les questions posées sont celles do
 
 **Lien :** [starofservice.com](https://www.starofservice.com/)
 
+![StarOfService — services populaires](images/inspirations/cartes-offres.jpg)
+![StarOfService — Tarifs](images/inspirations/chiffre-clés.jpg)
+
 **Ce qui est bien fait :**  
 Le flux en 3 étapes illustrées. "Dites-nous tout" → "Comparez les offres" → "Engagez votre professionnel". Trois icônes, trois phrases.  
 "X professionnels proches de chez vous" sur chaque catégorie. Réponse immédiate à "est-ce qu'il y a quelqu'un dans mon coin ?".  
 Le guide des prix est sur la page d'accueil. Fourchette affichée par métier. Pas de mauvaise surprise, cela donne confiance pour poster.
+
+**Formulaire guidé — qualification du besoin :**
+
+![StarOfService — tranche d'âge](images/inspirations/starofservice-formulaire-tranche-age.jpg) ![StarOfService — genre de musique](images/inspirations/starofservice-formulaire-genre-musique.jpg) ![StarOfService — lieu](images/inspirations/starofservice-formulaire-lieu.jpg) ![StarOfService — budget](images/inspirations/starofservice-formulaire-budget.jpg) ![StarOfService — date](images/inspirations/starofservice-formulaire-date.jpg)
+
+Le formulaire de demande fonctionne comme une conversation : une seule question par écran, une barre de progression en haut, et les boutons "Retour" / "Suivant" toujours au même endroit. Chaque question est formulée en langage courant ("Quel genre de musique aimeriez-vous ?", "Quel jour avez-vous besoin du DJ ?"). L'utilisateur n'a jamais à se demander combien il reste d'étapes ni où cliquer.  
+Ce qui est transposable à Project-Labor : ce pattern permet de qualifier un besoin complexe (type de culture, période, hébergement, équipements…) sans présenter un formulaire long et intimidant. Un exploitant qui poste une offre répond à une question à la fois — il n'a pas besoin de tout avoir en tête dès le départ.
 
 ---
 
@@ -201,6 +232,8 @@ Le guide des prix est sur la page d'accueil. Fourchette affichée par métier. P
 **Type d'écran :** Page contact 
 
 **Lien :** [wizi.farm](https://wizi.farm/)
+
+![WiziFarm — formulaire contact](images/inspirations/wizifarm-formulaire-contact.jpg)
 
 **Ce qui est bien fait :**  
 La page contact propose 3 portes, pas un formulaire fourre-tout. FAQ, rappel téléphonique, ou formulaire. L'utilisateur choisit son chemin en une seconde.  
@@ -215,6 +248,8 @@ Chaque produit a un nom simple et une ligne. Mission, Paie'Saisonnier, Petits co
 
 **Lien :** [laruchequiditoui.fr](https://laruchequiditoui.fr/fr)
 
+![La Ruche qui dit Oui — page d'accueil](images/inspirations/ruchequiditoui-page-accueil.jpg)
+
 **Ce qui est bien fait :**  
 L'entrée par le produit, et non par le menu. L'accueil montre des photos de fruits et légumes en grand format avec un seul bouton ("Commandez une caisse"). Pas de catégories à chercher — on voit ce que l'on peut acheter, on tape dessus. Pour un public terrain, l'image est le menu.  
 Les chiffres-clés sont en vitrine. 554 280 arbres adoptés, 4 754 937 caisses envoyées, 3 515 producteurs. La plateforme est "vivante".  
@@ -226,78 +261,112 @@ Trois pictogrammes résument l'ensemble. Agriculteur, bio, saison — compréhen
 
 ### Accueil
 
-- Chiffres clés visibles immédiatement — nombre d'offres, d'exploitants, de saisonniers inscrits ([lagriculture-recrute-accueil](images/inspirations/lagriculture-recrute-accueil.png))
+- Chiffres clés visibles immédiatement — nombre d'offres, d'exploitants, de saisonniers inscrits  
+  ![L'Agriculture recrute — accueil](images/inspirations/lagriculture-recrute-accueil.jpg)
 
-- Grille d'accès rapide 2×2 : chercher une offre, publier une offre, mon profil, mes candidatures ([lagriculture-recrute-accueil](images/inspirations/lagriculture-recrute-accueil.png), [adecco-mission](images/inspirations/adecco-mission.png))
+- Grille d'accès rapide 2×2 : chercher une offre, publier une offre, mon profil, mes candidatures  
+  ![L'Agriculture recrute — accueil](images/inspirations/lagriculture-recrute-accueil.jpg) ![Adecco — dashboard mission](images/inspirations/adecco-mission.jpg)
 
-- Compteur "X offres" sans avoir lancé de recherche ([StarOfService](images/inspirations/cartes-offres.png), [Travaux.com](images/inspirations/compteur-carte-offres.png))
+- Compteur "X offres" sans avoir lancé de recherche  
+  ![StarOfService — services populaires](images/inspirations/compteur-carte-offres.jpg)
 
 ### Recherche
 
-- Carte géolocalisée comme vue par défaut, avec pictos par type de culture ([jobopre-carte](images/inspirations/jobopre-carte.jpg))
+- Carte géolocalisée comme vue par défaut, avec pictos par type de culture  
+  ![Jobopré — carte](images/inspirations/jobopre-carte.jpg)
 
-- Filtres spécialisés métier : type de culture, hébergement, dates de saison — pas de filtres génériques ([jobopre-carte](images/inspirations/jobopre-carte.jpg), [jobagri-recherche-offre](images/inspirations/jobagri-recherche-offre.png))
+- Filtres spécialisés métier : type de culture, hébergement, dates de saison — pas de filtres génériques  
+  ![Jobopré — carte](images/inspirations/jobopre-carte.jpg) ![Jobagri — recherche](images/inspirations/jobagri-recherche-offre.jpg)
 
-- Onglets par type de contrat visibles dès l'écran de recherche : CDD, Saisonnier ([jobagri-recherche-offre](images/inspirations/jobagri-recherche-offre.png))
+- Onglets par type de contrat visibles dès l'écran de recherche : CDD, Saisonnier  
+  ![Jobagri — recherche](images/inspirations/jobagri-recherche-offre.jpg)
 
+- Chips de filtres actifs en haut de liste, ajoutables/retirables en un tap  
+  ![Hellowork — résultats](images/inspirations/hellowork-resultats.jpg)
 
-- Chips de filtres actifs en haut de liste, ajoutables/retirables en un tap ([hellowork-resultats](images/inspirations/hellowork-resultats.png))
-
-- Infos décisives visibles sur la carte sans ouvrir la fiche : salaire, lieu, type de contrat, date de début ([hellowork-resultats](images/inspirations/hellowork-resultats.png), [indeed-fiche-offre](images/inspirations/indeed-fiche-offre.png), [jobagri-recherche-offre](images/inspirations/jobagri-recherche-offre.png))
+- Infos décisives visibles sur la carte sans ouvrir la fiche : salaire, lieu, type de contrat, date de début  
+  ![Hellowork — résultats](images/inspirations/hellowork-resultats.jpg) ![Indeed — fiche offre](images/inspirations/indeed-fiche-offre.jpg) ![Jobagri — recherche](images/inspirations/jobagri-recherche-offre.jpg)
 
 ### Détail d'une offre
 
-- Salaire, horaires, lieu empilés verticalement avec icônes ([indeed-fiche-offre](images/inspirations/indeed-fiche-offre.jpg))
+- Salaire, horaires, lieu empilés verticalement avec icônes  
+  ![Indeed — fiche offre](images/inspirations/indeed-fiche-offre.jpg)
 
-- Bouton "Postuler" fixe en bas d'écran, toujours visible ([indeed-fiche-offre](images/inspirations/indeed-fiche-offre.jpg), [jobopre-carte.jpg](images/inspirations/jobopre-carte.jpg), [wttj-offre-d-emploi](images/inspirations/wttj-offre-d-emploi.jpg))
+- Bouton "Postuler" fixe en bas d'écran, toujours visible  
+  ![Indeed — fiche offre](images/inspirations/indeed-fiche-offre.jpg) ![Jobopré — carte](images/inspirations/jobopre-carte.jpg) ![WTTJ — offre d'emploi](images/inspirations/wttj-offre-d-emploi.jpg)
 
-- Description tronquée avec "Afficher plus" pour ne pas noyer le CTA ([indeed-fiche-offre](images/inspirations/indeed-fiche-offre.jpg))
+- Description tronquée avec "Afficher plus" pour ne pas noyer le CTA  
+  ![Indeed — fiche offre](images/inspirations/indeed-fiche-offre.jpg)
 
-- Tags contextuels : logement fourni, panier repas, transport disponible ([hellowork-resultats](images/inspirations/hellowork-resultats.jpg), [indeed-fiche-offre](images/inspirations/indeed-fiche-offre.jpg))
+- Tags contextuels : logement fourni, panier repas, transport disponible  
+  ![Hellowork — résultats](images/inspirations/hellowork-resultats.jpg) ![Indeed — fiche offre](images/inspirations/indeed-fiche-offre.jpg)
 
 ### Formulaire de publication d'offre
 
-- Champ libre en premier pour décrire le besoin "avec ses mots" ([allovoisins-creation-demande](images/inspirations/allovoisins-creation-demande.jpg), Travaux.com)
+- Champ libre en premier pour décrire le besoin "avec ses mots"  
+  ![AlloVoisins — création de demande](images/inspirations/allovoisins-creation-demande.jpg)
 
-- Une question par écran avec barre de progression ([habitatpresto-demande](images/inspirations/habitatpresto-demande.png))
+- Une question par écran avec barre de progression  
+  ![Habitatpresto — formulaire](images/inspirations/creation-demande-prestation.jpg)
 
-- Choix visuels par icônes pour le type de culture plutôt qu'un menu déroulant ([habitatpresto-demande](images/inspirations/habitatpresto-demande.png), [anefa-page-accueil-carroussel](images/inspirations/anefa-page-accueil-carroussel.png))
+- Choix visuels par icônes pour le type de culture plutôt qu'un menu déroulant  
+  ![Habitatpresto — formulaire](images/inspirations/creation-demande-prestation.jpg) ![ANEFA — carrousel métiers](images/inspirations/anefa-page-accueil-carroussel.jpg)
 
-- Photos optionnelles mais emplacements visibles — ça incite sans bloquer ([allovoisins-creation-demande](images/inspirations/allovoisins-creation-demande.jpg))
+- Photos optionnelles mais emplacements visibles — ça incite sans bloquer  
+  ![AlloVoisins — création de demande](images/inspirations/allovoisins-creation-demande.jpg)
 
-- Délai de réponse estimé affiché pour la réponse ([habitatpresto-creation-demande](images/inspirations/creation-demande-prestation.png))
-
+- Délai de réponse estimé affiché pour la réponse  
+  ![Habitatpresto — formulaire](images/inspirations/creation-demande-prestation.jpg)
 
 ### Formulaire d'inscription / connexion
 
-- Inscription en un formulaire court, opérationnel rapidement ([allovoisins-formulaire-inscription](images/inspirations/allovoisins-formulaire-inscription.png), [allovoisins-formulaire-connexion.png](images/inspirations/allovoisins-formulaire-connexion.png))
+- Inscription en un formulaire court, opérationnel rapidement  
+  ![AlloVoisins — inscription](images/inspirations/allovoisins-formulaire-inscription.jpg) ![AlloVoisins — connexion](images/inspirations/allovoisins-formulaire-connexion.jpg)
 
 ### Dashboard connecté (côté saisonnier)
 
-- Salutation par prénom ([adecco-mission.png](images/inspirations/adecco-mission.png))
+- Salutation par prénom  
+  ![Adecco — dashboard mission](images/inspirations/adecco-mission.jpg)
 
-- Carte mission avec toutes les infos pratiques regroupées : dates, horaires, lieu, taux horaire ([adecco-mission](images/inspirations/adecco-mission.png))
+- Carte mission avec toutes les infos pratiques regroupées : dates, horaires, lieu, taux horaire  
+  ![Adecco — dashboard mission](images/inspirations/adecco-mission.jpg)
 
-- Accès rapide en grille 2×2 pour les fonctions les plus utilisées ([adecco-mission](images/inspirations/adecco-mission.png), [lagriculture-recrute-accueil](images/inspirations/lagriculture-recrute-accueil.png))
+- Accès rapide en grille 2×2 pour les fonctions les plus utilisées  
+  ![Adecco — dashboard mission](images/inspirations/adecco-mission.jpg) ![L'Agriculture recrute — accueil](images/inspirations/lagriculture-recrute-accueil.jpg)
 
-- Profil avec photo, prénom, zone, compétences — pas de CV formel ([allovoisins-profil-particulier](images/inspirations/page-profil-particulier.png))
+- Profil avec photo, prénom, zone, compétences — pas de CV formel  
+  ![AlloVoisins — profil particulier](images/inspirations/page-profil-particulier.jpg)
 
 ### Dashboard connecté (côté exploitant)
 
-- Notifications actionnables sans ouvrir l'app : 3 lignes d'info + deux boutons ([habitatpresto-demande](images/inspirations/habitatpresto-demande.png))
+- Notifications actionnables sans ouvrir l'app : 3 lignes d'info + deux boutons  
+  ![Habitatpresto — formulaire](images/inspirations/creation-demande-prestation.jpg)
 
-- Les candidatures reçues affichent photo, zone, note — la confiance se construit visuellement ([alloVoisins-carte](images/inspirations/allovoisins-carte.png))
+- Les candidatures reçues affichent photo, zone, note — la confiance se construit visuellement  
+  ![AlloVoisins — cartes offres](images/inspirations/cartes-offres.jpg)
 
-- Profil avec photo, prénom, zone, siret ([allovoisins-profil-pro](images/inspirations/page-profil-pro.png))
+- Profil avec photo, prénom, zone, siret  
+  ![AlloVoisins — profil pro](images/inspirations/page-profil-pro.jpg)
 
 ### Navigation
 
-- Bottom navigation à 4 onglets maximum, stable sur tous les écrans ([adecco-mission](images/inspirations/adecco-mission.png))
+- Bottom navigation à 4 onglets maximum, stable sur tous les écrans  
+  ![Adecco — dashboard mission](images/inspirations/adecco-mission.jpg)
 
-- Carrousel de métiers illustrés par photos de terrain 
-([anefa-page-accueil-carroussel](anefa-page-accueil-carroussel.png))
+- Carrousel de métiers illustrés par photos de terrain  
+  ![ANEFA — carrousel métiers](images/inspirations/anefa-page-accueil-carroussel.jpg)
 
-- Deux entrées séparées demande / offreurs dès la landing page ([alloVoisins-bandeau-accueil](images/inspirations/bandeau-accueil.png))
+- Deux entrées séparées demande / offreurs dès la landing page  
+  ![AlloVoisins — bandeau accueil](images/inspirations/bandeau-accueil.jpg)
 
 ---
 
+## Idées concrètes applicables à Project-Labor
+
+**1. Prioriser la géolocalisation sur la recherche textuelle.** Le public visé cherche du travail *autour de lui*, pas par mot-clé. Plusieurs plateformes du benchmark (Jobopré, AlloVoisins) montrent que l'entrée spatiale réduit la friction pour des utilisateurs peu à l'aise avec l'écrit.
+
+**2. Rendre l'information décisive visible sans interaction.** Indeed, Hellowork et Jobopré convergent sur le même principe : les 3-4 critères de décision (salaire, lieu, dates, hébergement) doivent être lisibles d'un coup d'œil, sans ouvrir de fiche. Le saisonnier consulte dans des conditions dégradées (soleil, mains occupées, peu de temps) — chaque tap en moins compte.
+
+**3. Parler le langage du métier, pas celui du formulaire.** AlloVoisins et Habitatpresto montrent qu'un champ libre + des pictos métier remplacent avantageusement les menus déroulants et le vocabulaire RH. Pour Project-Labor, ça signifie s'appuyer sur les termes du terrain (vendanges, cueillette, conduite d'engins…) plutôt que sur des catégories administratives.
+
+---
