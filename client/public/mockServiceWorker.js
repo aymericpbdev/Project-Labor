@@ -7,7 +7,7 @@
  * - Please do NOT modify this file.
  */
 
-const PACKAGE_VERSION = '2.13.3'
+const PACKAGE_VERSION = '2.14.3'
 const INTEGRITY_CHECKSUM = '4db4a41e972cec1b64cc569c66952d82'
 const IS_MOCKED_RESPONSE = Symbol('isMockedResponse')
 const activeClientIds = new Set()
@@ -26,7 +26,7 @@ addEventListener('message', async function (event) {
   if (!clientId || !self.clients) {
     return
   }
-  
+
   const client = await self.clients.get(clientId)
 
   if (!client) {

@@ -6,7 +6,7 @@ import AgriLayout from '../layout/AgriLayout'
 import SaisonLayout from '../layout/SaisonLayout'
 
 // Pages publiques
-import LandingPage from '../pages/public/landingPage'
+import LandingPage from '../pages/public/landingPage/landingPage'
 import Connexion from '../pages/public/connexion'
 
 // Pages de test
