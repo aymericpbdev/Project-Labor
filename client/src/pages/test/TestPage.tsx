@@ -1,9 +1,6 @@
 import { useState } from 'react'
 
 import Button from '../../components/ui/Button/Button'
-import AnnonceCard from '../../components/annonces/AnnonceCard/AnnonceCard'
-import AnnonceCardSaison from '../../components/annonces/AnnonceCardSaison/AnnonceCardSaison'
-import AnnonceCardAgri from '../../components/annonces/AnnonceCardAgri/AnnonceCardAgri'
 import Badge from '../../components/ui/Badge/Badge'
 import Tag from '../../components/ui/Tag/Tag'
 import type { Skill } from '../../types'
@@ -14,7 +11,6 @@ import { LaborInput } from '../../components/ui/Input/input'
 import  LaborTextarea  from '../../components/ui/Textarea/textarea'
 import LaborMultiSelect from '../../components/ui/Select/select'
 import LaborCheckbox from '../../components/ui/Checkbox/checkbox'
-import AnnonceCardPublic from '../../components/annonces/AnnonceCardPublic/AnnonceCardPublic'
 
 
 
@@ -70,78 +66,8 @@ const annoncesMock = [
         <Button variant='danger' size='l'>warnig</Button>
         <Button variant='primary' size='m'>Connexion</Button>
 
-        <AnnonceCard typeCulture='Crop_Horticulture' onClick={() => alert('cliqué !')}>
-        <div>
-          <h3>Aide vendanges</h3>
-          <p>Vigne · Bordeaux, 33</p>
-          <p>1 sept → 15 oct</p>
-        </div>
-      </AnnonceCard>
 
-      {annoncesMock.map((annonce, index) => (
-          <AnnonceCardPublic
-            key={index}
-            titre={annonce.titre}
-            departement={annonce.departement}
-            postesRestants={annonce.postesRestants}
-            cropType={annonce.cropType}
-            onClick={() => alert('Cliqué — redirige vers connexion')}
-          />
-        ))}
 
-      <AnnonceCard typeCulture=" ">
-        <div>
-          <h3>Cueilleur de pommes</h3>
-          <p>Arboriculture · Montauban, 82</p>
-          <p>15 juin → 30 août</p>
-        </div>
-      </AnnonceCard>
-
-      <h2>Vue saisonnier</h2>
-      <AnnonceCardSaison
-        titre="Cueilleur de pommes"
-        cropType="Crop_Fruits"
-        ville="Montauban"
-        departement="82"
-        dateDebut="15 juin"
-        dateFin="30 août"
-        hebergement={true}
-        payAmount={12}
-        paymentType="Hourly"
-        postesRestants={2}
-        postesTotal={3}
-        statut="Active"
-        onClick={() => alert('Voir annonce')}
-      />
-
-      <AnnonceCardSaison
-        titre="Aide vendanges"
-        cropType="Crop_Vineyard"
-        ville="Bordeaux"
-        departement="33"
-        dateDebut="1 sept"
-        dateFin="15 oct"
-        hebergement={false}
-        payAmount={110}
-        paymentType="Weekly"
-        postesRestants={4}
-        postesTotal={6}
-        statut="Active"
-      />
-
-      <h2 style={{ marginTop: '2rem' }}>Vue agriculteur</h2>
-
-      <AnnonceCardAgri
-        titre="Cueilleur de pommes"
-        cropType="Crop_Fruits"
-        dateDebut="15 juin"
-        dateFin="30 août"
-        postesTotal={3}
-        postesPourvus={1}
-        statut="Active"
-        candidaturesTotal={5}
-        candidaturesEnAttente={2}
-      />
 
 
       <Badge variant='Pending' size='l'  ></Badge>
