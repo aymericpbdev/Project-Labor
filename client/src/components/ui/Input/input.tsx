@@ -12,6 +12,7 @@ interface LaborInputProps {
     isDisabled?: boolean;
     error?: string;
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    onBlur?: () => void;
 }
 
 export const LaborInput: React.FC<LaborInputProps> = ({
@@ -22,7 +23,8 @@ export const LaborInput: React.FC<LaborInputProps> = ({
     id,
     isDisabled,
     error,
-    onChange
+    onChange,
+    onBlur,
 }) => {
     return (
         <div className="labor-input-container">
@@ -37,6 +39,7 @@ export const LaborInput: React.FC<LaborInputProps> = ({
                     value={value}
                     disabled={isDisabled}
                     onChange={onChange}
+                    onBlur={onBlur}
                     className={`labor-input ${error ? 'error' : ''}`}
                 />
 
