@@ -11,6 +11,7 @@ import { LaborInput } from '../../components/ui/Input/input'
 import  LaborTextarea  from '../../components/ui/Textarea/textarea'
 import LaborMultiSelect from '../../components/ui/Select/select'
 import LaborCheckbox from '../../components/ui/Checkbox/checkbox'
+import AnnonceCardPublic from '../../components/annonces/AnnonceCardPublic/AnnonceCardPublic'
 
 
 
@@ -65,6 +66,28 @@ const annoncesMock = [
         <Button variant='secondary' size='s'>saisooooo</Button>
         <Button variant='danger' size='l'>warnig</Button>
         <Button variant='primary' size='m'>Connexion</Button>
+
+        <h2 style={{ marginTop: '2rem' }}>Vue publique (AnnonceCardPublic)</h2>
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(4, 1fr)',
+            gap: '1rem',
+            marginTop: '0.75rem',
+          }}
+        >
+          {annoncesMock.slice(0, 4).map((annonce) => (
+            <AnnonceCardPublic
+              key={annonce.titre}
+              titre={annonce.titre}
+              departement={annonce.departement}
+              postesRestants={annonce.postesRestants}
+              postesTotal={5}
+              cropType={annonce.cropType}
+              onClick={() => console.log('click:', annonce.titre)}
+            />
+          ))}
+        </div>
 
 
 
