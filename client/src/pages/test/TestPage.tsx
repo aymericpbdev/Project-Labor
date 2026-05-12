@@ -14,6 +14,7 @@ import { LaborInput } from '../../components/ui/Input/input'
 import  LaborTextarea  from '../../components/ui/Textarea/textarea'
 import LaborMultiSelect from '../../components/ui/Select/select'
 import LaborCheckbox from '../../components/ui/Checkbox/checkbox'
+import AnnonceCardPublic from '../../components/annonces/AnnonceCardPublic/AnnonceCardPublic'
 
 
 
@@ -53,6 +54,14 @@ const [checkedValuesLabor, setCheckedValuesLabor] = useState<string[]>([])
     { value: 'Skill_MarketGardening', label: 'Maraîchage' },
 ]
 
+const annoncesMock = [
+  { titre: 'Castrage maïs', departement: 'Landes', postesRestants: 2, cropType: 'Crop_Cereals' as const },
+  { titre: 'Récolte de tomates', departement: 'Tarn-et-Garonne', postesRestants: 4, cropType: 'Crop_Vegetables' as const },
+  { titre: 'Cueillette de prunes', departement: 'Lot-et-Garonne', postesRestants: 1, cropType: 'Crop_Fruits' as const },
+  { titre: 'Betails', departement: 'Gers', postesRestants: 3, cropType: 'Crop_Livestock' as const },
+  { titre: 'Taille de vigne', departement: 'Hérault', postesRestants: 5, cropType: 'Crop_Vineyard' as const },
+]
+
     return (
       <div>
         <h1>Accueil — Labor</h1>
@@ -61,13 +70,24 @@ const [checkedValuesLabor, setCheckedValuesLabor] = useState<string[]>([])
         <Button variant='danger' size='l'>warnig</Button>
         <Button variant='primary' size='m'>Connexion</Button>
 
-        <AnnonceCard typeCulture='Crop_Cereals' onClick={() => alert('cliqué !')}>
+        <AnnonceCard typeCulture='Crop_Horticulture' onClick={() => alert('cliqué !')}>
         <div>
           <h3>Aide vendanges</h3>
           <p>Vigne · Bordeaux, 33</p>
           <p>1 sept → 15 oct</p>
         </div>
       </AnnonceCard>
+
+      {annoncesMock.map((annonce, index) => (
+          <AnnonceCardPublic
+            key={index}
+            titre={annonce.titre}
+            departement={annonce.departement}
+            postesRestants={annonce.postesRestants}
+            cropType={annonce.cropType}
+            onClick={() => alert('Cliqué — redirige vers connexion')}
+          />
+        ))}
 
       <AnnonceCard typeCulture=" ">
         <div>

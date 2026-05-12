@@ -1,0 +1,124 @@
+/* STORY section narrative avec image et carte qui se chevauchent
+Deux variants : image-right (image à droite) ou image-left (image à gauche)
+La carte chevauche l'image sur environ 10% de la largeur. */
+
+   .story {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    align-items: center;
+    min-height: 400px;
+    margin: var(--labor-spacing-3xl) 0;
+    padding: 0 var(--labor-spacing-xl);
+    position: relative;
+  }
+  
+  /* IMAGE */
+  .story__image {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    border-radius: var(--labor-radius-l);
+    grid-row: 1;
+  }
+  
+  /* CARTE SOMBRE */
+  .story__card {
+    background: var(--labor-charcoal);
+    opacity: 97%;
+    color: var(--labor-cream);
+    padding: var(--labor-spacing-xl);
+    border-radius: var(--labor-radius-l);
+    border: 2px solid var(--labor-orange);
+    min-height: 420px;
+    display: flex;
+    flex-direction: column;
+    grid-row: 1;
+    z-index: 1;
+  }
+  
+  /* VARIANT RIGHT image à droite, carte à gauche */
+  .story--right .story__image {
+    grid-column: 6 / 13;
+  }
+  .story--right .story__card {
+    grid-column: 1 / 8;
+  }
+  
+  /* VARIANT LEFT image à gauche, carte à droite */
+  .story--left .story__image {
+    grid-column: 1 / 8;
+  }
+  .story--left .story__card {
+    grid-column: 6 / 13;
+  }
+  
+  /* CONTENU DE LA CARTE */
+  .story__title {
+    font-family: var(--labor-font-heading);
+    font-size: var(--labor-font-size-2xl);
+    font-weight: var(--labor-font-weight-bold);
+    margin-bottom: var(--labor-spacing-m);
+  }
+  
+  .story__text {
+    font-size: var(--labor-font-size-m);
+    line-height: 1.6;
+    margin: 0;
+  }
+  
+  /* INFO bas-droite de la carte */
+  .story__info {
+    margin-top: auto;
+    padding-top: var(--labor-spacing-l);
+    text-align: right;
+  }
+  
+  .story__subtitle {
+    font-family: var(--labor-font-heading);
+    font-size: var(--labor-font-size-l);
+    font-weight: var(--labor-font-weight-semibold);
+    margin: 0;
+  }
+  
+  .story__subtext {
+    font-size: var(--labor-font-size-s);
+    opacity: 0.8;
+    margin: 0;
+  }
+
+  @media (max-width: 900px) {
+    .story {
+      padding: 0;
+    }
+ 
+    .story--right .story__image {
+      grid-column: 7 / 13;
+    }
+    .story--right .story__card {
+      grid-column: 1 / 9;
+    }
+
+    .story--left .story__image {
+      grid-column: 1 / 7;
+    }
+    .story--left .story__card {
+      grid-column: 5 / 13;
+    }
+  
+    .story__image {
+      height: 500px;
+      border-radius: 0;
+    }
+  
+    .story__card {
+      height: 500px;
+      border-radius: 0;
+      opacity: 100%;
+    }
+
+    .story__text {
+      padding-top: 40px;
+      font-size: var(--labor-font-size-xs);
+    }
+
+  }
