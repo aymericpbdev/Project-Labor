@@ -193,6 +193,16 @@
     animation: annonce-card-agri-marquee 9s linear infinite;
     animation-delay: 0.35s;
   }
+
+  .annonce-card-agri__title-measure {
+    position: absolute;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+    white-space: nowrap;
+    pointer-events: none;
+    font: inherit;
+  }
   
   @keyframes annonce-card-agri-marquee {
     0% { transform: translateX(0); }

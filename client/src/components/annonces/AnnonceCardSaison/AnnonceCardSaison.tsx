@@ -53,20 +53,24 @@ function AnnonceCardSaison({
 }: AnnonceCardSaisonProps) {
 
   const titleRef = useRef<HTMLHeadingElement>(null)
+  const measureRef = useRef<HTMLSpanElement>(null)
   const [isOverflowing, setIsOverflowing] = useState(false)
 
-  useEffect(() => {
-    const el = titleRef.current
-    if (!el) return
-  
-    const checkOverflow = () => {
-      setIsOverflowing(el.scrollWidth > el.clientWidth + 1)
-    }
-    const observer = new ResizeObserver(checkOverflow)
-    observer.observe(el)
-  
-    return () => observer.disconnect()
-  }, [titre])
+  // Le useEffect mesure le span de référence, pas le H3 affiché(pour eviter un probleme de double titre apres le changement de taille de la fentre )
+useEffect(() => {
+  const container = titleRef.current
+  const measure = measureRef.current
+  if (!container || !measure) return
+
+  const checkOverflow = () => {
+    setIsOverflowing(measure.scrollWidth > container.clientWidth + 1)
+  }
+
+  const observer = new ResizeObserver(checkOverflow)
+  observer.observe(container)
+
+  return () => observer.disconnect()
+}, [titre])
 
   // CALCULS DÉRIVÉS 
   const fillPercent = postesTotal > 0 ? (postesRestants / postesTotal) * 100 : 0
@@ -132,6 +136,9 @@ function AnnonceCardSaison({
                 <span className="annonce-card-saison__title-spacer" />
               </>
             )}
+          </span>
+          <span ref={measureRef} className="annonce-card-agri__title-measure">
+            {titre}
           </span>
         </h3>
 

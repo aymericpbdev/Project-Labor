@@ -29,20 +29,24 @@ function AnnonceCardPublic({
  
   // Ref sur le H3 (le conteneur en overflow:hidden) : c'est lui qui sait si son contenu déborde, pas le span interne qui peut s'étirer librement.
   const titleRef = useRef<HTMLHeadingElement>(null)
+  const measureRef = useRef<HTMLSpanElement>(null)
   const [isOverflowing, setIsOverflowing] = useState(false)
 
   // EFFET : DÉTECTION DE L'OVERFLOW 
  // Le useEffect mesure scrollWidth (largeur réelle du texte, y compris ce qui dépasse) vs clientWidth (largeur visible). Si le texte déborde, on ajoute la classe --overflow qui active l'animation au hover
 
- useEffect(() => {
-  const el = titleRef.current
-  if (!el) return
+// Le useEffect mesure le span de référence, pas le H3 affiché(pour eviter un probleme de double titre apres le changement de taille de la fentre )
+useEffect(() => {
+  const container = titleRef.current
+  const measure = measureRef.current
+  if (!container || !measure) return
 
   const checkOverflow = () => {
-    setIsOverflowing(el.scrollWidth > el.clientWidth + 1)
+    setIsOverflowing(measure.scrollWidth > container.clientWidth + 1)
   }
+
   const observer = new ResizeObserver(checkOverflow)
-  observer.observe(el)
+  observer.observe(container)
 
   return () => observer.disconnect()
 }, [titre])
@@ -98,6 +102,9 @@ function AnnonceCardPublic({
                 <span className="annonce-card-public__title-spacer" />
               </>
             )}
+          </span>
+          <span ref={measureRef} className="annonce-card-agri__title-measure">
+            {titre}
           </span>
         </h3>
 
