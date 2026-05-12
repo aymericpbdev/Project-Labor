@@ -40,13 +40,13 @@ function AnnonceCardAgri({
   imgUrl,
   onClick,
 }: AnnonceCardAgriProps) {
-  // Même logique que AnnonceCardPublic : on mesure si le titre déborde pour activer le marquee au hover uniquement quand c'est utile.
-  const titleTextRef = useRef<HTMLSpanElement>(null)
+  // Ref sur le H3 (le conteneur en overflow:hidden) : c'est lui qui sait si son contenu déborde, pas le span interne qui peut s'étirer librement.
+  const titleRef = useRef<HTMLHeadingElement>(null)
   const [isOverflowing, setIsOverflowing] = useState(false)
 
   useEffect(() => {
     const checkOverflow = () => {
-      const el = titleTextRef.current
+      const el = titleRef.current
       if (!el) return
       setIsOverflowing(el.scrollWidth > el.clientWidth + 1)
     }
@@ -129,12 +129,13 @@ function AnnonceCardAgri({
 
         {/* Titre */}
         <h3
+          ref={titleRef}
           className={`annonce-card-agri__title ${
             isOverflowing ? 'annonce-card-agri__title--overflow' : ''
           }`}
         >
           <span className="annonce-card-agri__title-track">
-            <span ref={titleTextRef} className="annonce-card-agri__title-text">
+            <span className="annonce-card-agri__title-text">
               {titre}
             </span>
             {isOverflowing && (

@@ -17,6 +17,7 @@
     /* Texte */
     --labor-color-text: var(--labor-charcoal);
     --labor-color-text-light: var(--labor-cream);
+    --labor-color-text-white: #fff;
     --labor-color-text-green: var(--labor-sage);
     --labor-color-text-reverse: ;
 

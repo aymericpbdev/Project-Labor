@@ -27,7 +27,8 @@ function AnnonceCardPublic({
   onClick,
 }: AnnonceCardPublicProps) {
  
-  const titleTextRef = useRef<HTMLSpanElement>(null)
+  // Ref sur le H3 (le conteneur en overflow:hidden) : c'est lui qui sait si son contenu déborde, pas le span interne qui peut s'étirer librement.
+  const titleRef = useRef<HTMLHeadingElement>(null)
   const [isOverflowing, setIsOverflowing] = useState(false)
 
   // EFFET : DÉTECTION DE L'OVERFLOW 
@@ -35,7 +36,7 @@ function AnnonceCardPublic({
 
   useEffect(() => {
     const checkOverflow = () => {
-      const el = titleTextRef.current
+      const el = titleRef.current
       if (!el) return
 
       setIsOverflowing(el.scrollWidth > el.clientWidth + 1)
@@ -77,12 +78,13 @@ function AnnonceCardPublic({
       {/* Zone contenu */}
       <div className="annonce-card-public__body">
         <h3
+          ref={titleRef}
           className={`annonce-card-public__title ${
             isOverflowing ? 'annonce-card-public__title--overflow' : ''
           }`}
         >
           <span className="annonce-card-public__title-track">
-            <span ref={titleTextRef} className="annonce-card-public__title-text">
+            <span className="annonce-card-public__title-text">
               {titre}
             </span>
             {/* On dédouble le texte pour un défilement en boucle continue.

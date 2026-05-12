@@ -1,0 +1,301 @@
+/* CARD AGRI utilisée dans "Mes annonces" côté agriculteur. Affiche : photo, statut, titre, dates,jauge de postes pourvus, total candidatures + notif pill.
+*/
+
+   .annonce-card-agri {
+    display: flex;
+    flex-direction: column;
+    aspect-ratio: 1 / 1.28;   
+    background-color: var(--labor-color-bg);
+    border: 1px solid var(--labor-color-border-light);
+    border-radius: var(--labor-radius-m);
+    overflow: hidden;
+    cursor: pointer;
+    transition:
+      transform var(--labor-transition-fast),
+      box-shadow var(--labor-transition-medium),
+      border-color var(--labor-transition-fast);
+  
+    transform-origin: center;
+    position: relative;
+  }
+  
+  .annonce-card-agri:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 22px rgba(44, 42, 30, 0.12);
+    border-color: var(--labor-color-border);
+    z-index: 2;
+  }
+  
+  .annonce-card-agri--draft .annonce-card-agri__photo {
+    filter: saturate(0.5) opacity(0.85);
+  }
+  .annonce-card-agri--closed .annonce-card-agri__photo {
+    filter: grayscale(0.6) opacity(0.75);
+  }
+  
+  /* ZONE PHOTO */
+  
+  .annonce-card-agri__photo {
+    width: 100%;
+    flex: 1;
+    min-height: 0;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+  
+  /* BADGE STATUT (overlay haut-gauche) */
+  
+  .annonce-card-agri__status {
+    position: absolute;
+    top: 0.6rem;           
+    left: 0.6rem;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;          
+    padding: 0.2rem 0.5rem;
+    border-radius: var(--labor-radius-s);
+    font-family: var(--labor-font-heading);
+    font-size: var(--labor-font-size-xs);
+    font-weight: var(--labor-font-weight-semibold);
+    backdrop-filter: blur(4px);
+  
+    z-index: 2;
+  }
+  
+  .annonce-card-agri__status-dot {
+    width: 0.4rem;
+    height: 0.4rem;
+    border-radius: 50%;
+  }
+  
+  .annonce-card-agri__status--active {
+    background-color: rgba(237, 244, 232, 0.95); 
+    color: var(--labor-color-badge-active);
+  }
+  .annonce-card-agri__status--active .annonce-card-agri__status-dot {
+    background-color: var(--labor-color-badge-active);
+  }
+  
+  .annonce-card-agri__status--draft {
+    background-color: rgba(240, 237, 230, 0.95);  
+    color: var(--labor-color-badge-brouillon);
+  }
+  .annonce-card-agri__status--draft .annonce-card-agri__status-dot {
+    background-color: var(--labor-color-badge-brouillon);
+  }
+  
+  .annonce-card-agri__status--closed {
+    background-color: rgba(251, 234, 234, 0.95); 
+    color: var(--labor-color-badge-cloturee);
+  }
+  .annonce-card-agri__status--closed .annonce-card-agri__status-dot {
+    background-color: var(--labor-color-badge-cloturee);
+  }
+  
+  /* NOTIF PILL (gradient soleil, à cheval)*/
+  
+  .annonce-card-agri__notif {
+    position: absolute;
+    bottom: -1rem;
+    right: 0.7rem;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.4rem 0.8rem 0.4rem 0.5rem;  
+    border-radius: var(--labor-radius-full);
+    background: var(--labor-color-border-gradient);
+    color: var(--labor-color-text-white);
+    font-family: var(--labor-font-heading);
+    font-size: var(--labor-font-size-xs);
+    font-weight: var(--labor-font-weight-semibold);
+    box-shadow: 0 4px 14px rgba(247, 107, 28, 0.35);
+    z-index: 4;
+    transition: transform var(--labor-transition-fast), box-shadow var(--labor-transition-fast);
+  }
+  
+  .annonce-card-agri:hover .annonce-card-agri__notif {
+    transform: scale(1.05);
+    box-shadow: 0 6px 18px rgba(247, 107, 28, 0.45);
+  }
+  
+  .annonce-card-agri__notif-icon {
+    width: 0.9rem;
+    height: 0.9rem;
+  }
+  
+  .annonce-card-agri__notif-count {
+    font-size: var(--labor-font-size-s);
+    font-weight: var(--labor-font-weight-bold);
+    line-height: 1;
+  }
+  
+  /* ZONE CONTENU */
+  
+  .annonce-card-agri__body {
+    flex-shrink: 0;
+    padding: 1.4rem 0.9rem 0.9rem;
+  
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  
+  /* TITRE AVEC MARQUEE */
+  
+  .annonce-card-agri__title {
+    margin: 0;
+    font-family: var(--labor-font-heading);
+    font-size: var(--labor-font-size-s);
+    font-weight: var(--labor-font-weight-semibold);
+    color: var(--labor-color-text);
+    line-height: 1.25;
+  
+    height: calc(var(--labor-font-size-s) * 1.25);
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .annonce-card-agri__title-track {
+    display: inline-flex;
+    white-space: nowrap;
+    will-change: transform;
+  }
+  
+  .annonce-card-agri__title-text {
+    display: inline-block;
+  }
+  
+  .annonce-card-agri__title-spacer {
+    display: inline-block;
+    width: 2rem;
+  }
+  
+  .annonce-card-agri__title::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 1.5rem;
+    background: linear-gradient(to right, transparent, var(--labor-color-bg) 80%);
+    pointer-events: none;
+    transition: opacity var(--labor-transition-fast);
+  }
+  
+  .annonce-card-agri:hover .annonce-card-agri__title::after {
+    opacity: 0;
+  }
+  
+  .annonce-card-agri:hover
+    .annonce-card-agri__title--overflow
+    .annonce-card-agri__title-track {
+    animation: annonce-card-agri-marquee 9s linear infinite;
+    animation-delay: 0.35s;
+  }
+  
+  @keyframes annonce-card-agri-marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-50% - 1rem)); }
+  }
+  
+  @media (prefers-reduced-motion: reduce) {
+    .annonce-card-agri:hover
+      .annonce-card-agri__title--overflow
+      .annonce-card-agri__title-track {
+      animation: none;
+    }
+  }
+  
+  /* MÉTA (dates) */
+  
+  .annonce-card-agri__meta {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: var(--labor-font-size-xs);
+    color: var(--labor-color-neutral);
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  
+  .annonce-card-agri__meta-icon {
+    width: 0.7rem;
+    height: 0.7rem;
+    flex-shrink: 0;
+  }
+  
+  .annonce-card-agri__meta span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  /* SÉPARATEUR*/
+  
+  .annonce-card-agri__divider {
+    height: 1px;
+    background-color: #F0EBD5;
+    margin: 0.1rem 0;
+  }
+  
+  /* J AUGE POSTES POURVUS*/
+  
+  .annonce-card-agri__progress {
+    display: flex;
+    flex-direction: column;
+    gap: var(--labor-spacing-xs);
+  }
+  
+  .annonce-card-agri__progress-text {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: var(--labor-font-heading);
+  }
+  
+  .annonce-card-agri__progress-label {
+    font-size: var(--labor-font-size-xs);
+    font-weight: var(--labor-font-weight-medium);
+    color: var(--labor-color-success);
+  }
+  
+  .annonce-card-agri__progress-total {
+    font-size: 0.6rem;   
+    color: var(--labor-color-neutral);
+  }
+  
+  .annonce-card-agri__progress-bar {
+    width: 100%;
+    height: 4px;
+    background-color: var(--labor-color-bg-soft);
+    border-radius: var(--labor-radius-full);
+    overflow: hidden;
+  }
+  
+  .annonce-card-agri__progress-fill {
+    height: 100%;
+    background-color: var(--labor-color-success);
+    border-radius: var(--labor-radius-full);
+    transition: width var(--labor-transition-medium);
+  }
+  
+  /* LIGNE CANDIDATURES (TOTAL)*/
+  
+  .annonce-card-agri__candidatures {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: var(--labor-font-size-xs);
+    color: var(--labor-color-neutral);
+    padding-top: 0.1rem;
+  }
+  
+  .annonce-card-agri__candidatures-icon {
+    width: 0.7rem;
+    height: 0.7rem;
+
+  }
+  
+  .annonce-card-agri__candidatures-empty {
+    font-style: italic;
+  }
