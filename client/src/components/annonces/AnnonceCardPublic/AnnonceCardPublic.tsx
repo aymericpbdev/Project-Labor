@@ -34,18 +34,18 @@ function AnnonceCardPublic({
   // EFFET : DÉTECTION DE L'OVERFLOW 
  // Le useEffect mesure scrollWidth (largeur réelle du texte, y compris ce qui dépasse) vs clientWidth (largeur visible). Si le texte déborde, on ajoute la classe --overflow qui active l'animation au hover
 
-  useEffect(() => {
-    const checkOverflow = () => {
-      const el = titleRef.current
-      if (!el) return
+ useEffect(() => {
+  const el = titleRef.current
+  if (!el) return
 
-      setIsOverflowing(el.scrollWidth > el.clientWidth + 1)
-    }
-    checkOverflow()
+  const checkOverflow = () => {
+    setIsOverflowing(el.scrollWidth > el.clientWidth + 1)
+  }
+  const observer = new ResizeObserver(checkOverflow)
+  observer.observe(el)
 
-    window.addEventListener('resize', checkOverflow)
-    return () => window.removeEventListener('resize', checkOverflow)
-  }, [titre])
+  return () => observer.disconnect()
+}, [titre])
 
   // CALCULS DÉRIVÉS
 

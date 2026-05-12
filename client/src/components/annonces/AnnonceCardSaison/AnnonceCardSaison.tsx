@@ -56,15 +56,16 @@ function AnnonceCardSaison({
   const [isOverflowing, setIsOverflowing] = useState(false)
 
   useEffect(() => {
+    const el = titleRef.current
+    if (!el) return
+  
     const checkOverflow = () => {
-      const el = titleRef.current
-      if (!el) return
       setIsOverflowing(el.scrollWidth > el.clientWidth + 1)
     }
-
-    checkOverflow()
-    window.addEventListener('resize', checkOverflow)
-    return () => window.removeEventListener('resize', checkOverflow)
+    const observer = new ResizeObserver(checkOverflow)
+    observer.observe(el)
+  
+    return () => observer.disconnect()
   }, [titre])
 
   // CALCULS DÉRIVÉS 
