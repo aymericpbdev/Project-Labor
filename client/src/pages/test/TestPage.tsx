@@ -13,6 +13,7 @@ import LaborMultiSelect from '../../components/ui/Select/select'
 import LaborCheckbox from '../../components/ui/Checkbox/checkbox'
 import AnnonceCardPublic from '../../components/annonces/AnnonceCardPublic/AnnonceCardPublic'
 import AnnonceCardAgri from '../../components/annonces/AnnonceCardAgri/AnnonceCardAgri'
+import AnnonceCardSaison from '../../components/annonces/AnnonceCardSaison/AnnonceCardSaison'
 
 
 
@@ -71,6 +72,9 @@ const annoncesMock = [
         <h2 style={{ marginTop: '2rem' }}>Vue publique (AnnonceCardPublic)</h2>
         <div
           style={{
+            position: 'relative',
+            width: '90%',
+            left: '5%',
             display: 'grid',
             gridTemplateColumns: 'repeat(4, 1fr)',
             gap: '1rem',
@@ -93,6 +97,9 @@ const annoncesMock = [
         <h2 style={{ marginTop: '2rem' }}>Vue agriculteur (AnnonceCardAgri)</h2>
         <div
           style={{
+            position: 'relative',
+            width: '90%',
+            left: '5%',
             display: 'grid',
             gridTemplateColumns: 'repeat(4, 1fr)',
             gap: '1rem',
@@ -147,6 +154,84 @@ const annoncesMock = [
             postesPourvus={8}
             statut="Closed"
             candidaturesTotal={23}
+          />
+        </div>
+
+        <h2 style={{ marginTop: '2rem' }}>Vue saisonnier (AnnonceCardSaison)</h2>
+        <div
+          style={{
+            position: 'relative',
+            width: '90%',
+            left: '5%',
+            display: 'grid',
+            gridTemplateColumns: 'repeat(4, 1fr)',
+            gap: '1rem',
+            marginTop: '0.75rem',
+          }}
+        >
+          {/* Active hourly hébergement */}
+          <AnnonceCardSaison
+            titre="Cueilleur de pommes"
+            cropType="Crop_Fruits"
+            ville="Montauban"
+            departement="Tarn-et-Garonne"
+            dateDebut="2026-06-15T08:30:00Z"
+            dateFin="2026-08-30T08:30:00Z"
+            hebergement={true}
+            payAmount={12}
+            paymentType="Hourly"
+            postesRestants={2}
+            postesTotal={4}
+            statut="Active"
+            onClick={() => console.log('click pommes')}
+          />
+
+          {/* Active weekly sans hébergement, titre long */}
+          <AnnonceCardSaison
+            titre="Aide vendanges Bordelais saison 2026"
+            cropType="Crop_Vineyard"
+            ville="Saint-Émilion"
+            departement="Gironde"
+            dateDebut="2026-09-01T08:30:00Z"
+            dateFin="2026-10-15T08:30:00Z"
+            hebergement={false}
+            payAmount={450}
+            paymentType="Weekly"
+            postesRestants={3}
+            postesTotal={6}
+            statut="Active"
+          />
+
+          {/* Active monthly hébergement, warning 1 poste */}
+          <AnnonceCardSaison
+            titre="Récolte oliviers Provence"
+            cropType="Crop_OliveTrees"
+            ville="Aix-en-Provence"
+            departement="Bouches-du-Rhône"
+            dateDebut="2026-10-01T08:30:00Z"
+            dateFin="2026-11-20T08:30:00Z"
+            hebergement={true}
+            payAmount={1800}
+            paymentType="Monthly"
+            postesRestants={1}
+            postesTotal={8}
+            statut="Active"
+          />
+
+          {/* Closed */}
+          <AnnonceCardSaison
+            titre="Cueillette fraises bio"
+            cropType="Crop_Fruits"
+            ville="Sarlat"
+            departement="Dordogne"
+            dateDebut="2025-05-01T08:30:00Z"
+            dateFin="2025-07-15T08:30:00Z"
+            hebergement={false}
+            payAmount={12}
+            paymentType="Hourly"
+            postesRestants={0}
+            postesTotal={10}
+            statut="Closed"
           />
         </div>
 

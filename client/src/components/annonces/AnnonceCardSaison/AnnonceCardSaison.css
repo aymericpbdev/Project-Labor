@@ -1,0 +1,296 @@
+/* CARD SAISON version recherche utilisée dans la page de recherche d'annonces côté saisonnier. Affiche : photo, titre, ville/dpt, dates, rémunération, hébergement (conditionnel), jauge de postes libres.*/
+
+   .annonce-card-saison {
+    display: flex;
+    flex-direction: column;
+    aspect-ratio: 1 / 1.42; 
+    background-color: var(--labor-color-bg);
+    border: 1px solid var(--labor-color-border-light);
+    border-radius: var(--labor-radius-m);
+    overflow: hidden;
+    cursor: pointer;
+    transition:
+      transform var(--labor-transition-fast),
+      box-shadow var(--labor-transition-medium),
+      border-color var(--labor-transition-fast);
+  
+    transform-origin: center;
+    position: relative;
+  }
+  
+  .annonce-card-saison:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 22px rgba(44, 42, 30, 0.12);
+    border-color: var(--labor-color-border);
+    z-index: 2;
+  }
+  
+  .annonce-card-saison--closed .annonce-card-saison__photo {
+    filter: grayscale(0.6) opacity(0.75);
+  }
+  
+  /* ZONE PHOTO  */
+  
+  .annonce-card-saison__photo {
+    width: 100%;
+    flex: 1;
+    min-height: 0;
+  
+    background-size: cover;
+    background-position: center;
+  
+    position: relative;
+  }
+  
+  /* BADGE STATUT (closed uniquement, overlay)*/
+  
+  .annonce-card-saison__status {
+    position: absolute;
+    top: 0.6rem;
+    left: 0.6rem;
+  
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+  
+    padding: 0.3rem 0.5rem;
+    border-radius: var(--labor-radius-s);
+  
+    font-family: var(--labor-font-heading);
+    font-size: var(--labor-font-size-xs);
+    font-weight: var(--labor-font-weight-semibold);
+  
+    backdrop-filter: blur(4px);
+  
+    z-index: 2;
+  }
+  
+  .annonce-card-saison__status-dot {
+    width: 0.4rem;
+    height: 0.4rem;
+    border-radius: 50%;
+  }
+  
+  .annonce-card-saison__status--closed {
+    background-color: rgba(251, 234, 234, 0.95);
+    color: var(--labor-color-badge-cloturee);
+  }
+  .annonce-card-saison__status--closed .annonce-card-saison__status-dot {
+    background-color: var(--labor-color-badge-cloturee);
+  }
+  
+  /* ZONE CONTENU */
+  
+  .annonce-card-saison__body {
+    flex-shrink: 0;
+    padding: 0.7rem 0.9rem 0.9rem;
+  
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  
+  /* TITRE AVEC MARQUEE */
+  
+  .annonce-card-saison__title {
+    margin: 0;
+    font-family: var(--labor-font-heading);
+    font-size: var(--labor-font-size-s);
+    font-weight: var(--labor-font-weight-semibold);
+    color: var(--labor-color-text);
+    line-height: 1.25;
+  
+    height: calc(var(--labor-font-size-s) * 1.25);
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .annonce-card-saison__title-track {
+    display: inline-flex;
+    white-space: nowrap;
+    will-change: transform;
+  }
+  
+  .annonce-card-saison__title-text {
+    display: inline-block;
+  }
+  
+  .annonce-card-saison__title-spacer {
+    display: inline-block;
+    width: 2rem;
+  }
+  
+  .annonce-card-saison__title::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 1.5rem;
+    background: linear-gradient(to right, transparent, var(--labor-color-bg) 80%);
+    pointer-events: none;
+    transition: opacity var(--labor-transition-fast);
+  }
+  
+  .annonce-card-saison:hover .annonce-card-saison__title::after {
+    opacity: 0;
+  }
+  
+  .annonce-card-saison:hover
+    .annonce-card-saison__title--overflow
+    .annonce-card-saison__title-track {
+    animation: annonce-card-saison-marquee 9s linear infinite;
+    animation-delay: 0.35s;
+  }
+
+  .annonce-card-agri__title-measure {
+    position: absolute;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+    white-space: nowrap;
+    pointer-events: none;
+    font: inherit;
+  }
+  
+  @keyframes annonce-card-saison-marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-50% - 1rem)); }
+  }
+  
+  @media (prefers-reduced-motion: reduce) {
+    .annonce-card-saison:hover
+      .annonce-card-saison__title--overflow
+      .annonce-card-saison__title-track {
+      animation: none;
+    }
+  }
+  
+  /* MÉTA (ville/dpt + dates)*/
+  
+  .annonce-card-saison__meta {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: var(--labor-font-size-xs);
+    color: var(--labor-color-neutral);
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  
+  .annonce-card-saison__meta-icon {
+    width: 0.7rem;
+    height: 0.7rem;
+    flex-shrink: 0;
+  }
+  
+  .annonce-card-saison__meta span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  /* SÉPARATEUR */
+  
+  .annonce-card-saison__divider {
+    height: 1px;
+    background-color: #F0EBD5;
+    margin: 0.1rem 0;
+  }
+  
+  /*  BOTTOM ROW (rémunération + hébergement)*/
+  
+  .annonce-card-saison__bottom-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+  
+  .annonce-card-saison__pay {
+    display: flex;
+    align-items: baseline;
+    gap: 0.25rem;
+    font-family: var(--labor-font-heading);
+  }
+  
+  .annonce-card-saison__pay-amount {
+    font-size: var(--labor-font-size-m);
+    font-weight: var(--labor-font-weight-bold);
+    color: var(--labor-color-text);
+  }
+  
+  .annonce-card-saison__pay-unit {
+    color: var(--labor-color-neutral);
+    font-weight: var(--labor-font-weight-medium);
+  }
+  
+  .annonce-card-saison__tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    flex-shrink: 0;
+  
+    padding: 0.2rem 0.5rem;
+    border-radius: var(--labor-radius-s);
+  
+    background-color: var(--labor-color-badge-active-bg);
+    color: var(--labor-color-badge-active);
+    font-size: 0.6rem;    
+    font-family: var(--labor-font-heading);
+    font-weight: var(--labor-font-weight-medium);
+  }
+  
+  .annonce-card-saison__tag-icon {
+    width: 0.6rem;
+    height: 0.6rem;
+  }
+  
+  /* JAUGE POSTES LIBRES  */
+  
+  .annonce-card-saison__progress {
+    padding-top: var(--labor-spacing-xs);
+    display: flex;
+    flex-direction: column;
+    gap: var(--labor-spacing-xs);
+  }
+  
+  .annonce-card-saison__progress-text {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: var(--labor-font-heading);
+  }
+  
+  .annonce-card-saison__progress-label {
+    font-size: var(--labor-font-size-xs);
+    font-weight: var(--labor-font-weight-medium);
+    color: var(--labor-color-success);
+  }
+  
+  .annonce-card-saison__progress-label--warning {
+    color: #B27512;
+  }
+  
+  .annonce-card-saison__progress-total {
+    font-size: 0.7rem;
+    color: var(--labor-color-neutral);
+  }
+  
+  .annonce-card-saison__progress-bar {
+    width: 100%;
+    height: 4px;
+    background-color: var(--labor-color-bg-soft);
+    border-radius: var(--labor-radius-full);
+    overflow: hidden;
+  }
+  
+  .annonce-card-saison__progress-fill {
+    height: 100%;
+    background-color: var(--labor-color-success);
+    border-radius: var(--labor-radius-full);
+    transition: width var(--labor-transition-medium);
+  }
+  
+  .annonce-card-saison__progress-fill--warning {
+    background-color: var(--labor-color-warning);
+  }
