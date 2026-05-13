@@ -42,25 +42,25 @@ function AnnonceCardAgri({
 }: AnnonceCardAgriProps) {
   // Ref sur le H3 (le conteneur en overflow:hidden) : c'est lui qui sait si son contenu déborde, pas le span interne qui peut s'étirer librement.
   // Dans la déclaration des refs, on en ajoute une 2e :
-const titleRef = useRef<HTMLHeadingElement>(null)
-const measureRef = useRef<HTMLSpanElement>(null)
-const [isOverflowing, setIsOverflowing] = useState(false)
+  const titleRef = useRef<HTMLHeadingElement>(null)
+  const measureRef = useRef<HTMLSpanElement>(null)
+  const [isOverflowing, setIsOverflowing] = useState(false)
 
-// Le useEffect mesure le span de référence, pas le H3 affiché(pour eviter un probleme de double titre apres le changement de taille de la fentre )
-useEffect(() => {
-  const container = titleRef.current
-  const measure = measureRef.current
-  if (!container || !measure) return
+  // Le useEffect mesure le span de référence, pas le H3 affiché(pour eviter un probleme de double titre apres le changement de taille de la fentre )
+  useEffect(() => {
+    const container = titleRef.current
+    const measure = measureRef.current
+    if (!container || !measure) return
 
-  const checkOverflow = () => {
-    setIsOverflowing(measure.scrollWidth > container.clientWidth + 1)
-  }
+    const checkOverflow = () => {
+      setIsOverflowing(measure.scrollWidth > container.clientWidth + 1)
+    }
 
-  const observer = new ResizeObserver(checkOverflow)
-  observer.observe(container)
+    const observer = new ResizeObserver(checkOverflow)
+    observer.observe(container)
 
-  return () => observer.disconnect()
-}, [titre])
+    return () => observer.disconnect()
+  }, [titre])
 
   // CALCULS DÉRIVÉS
 
@@ -70,6 +70,8 @@ useEffect(() => {
   const isDraft = statut === JobListingStatus.Draft
   const isClosed = statut === JobListingStatus.Closed
   const isActive = statut === JobListingStatus.Active
+
+  const isProgressNeutral = isClosed || postesPourvus === postesTotal
 
   // Notif pill : visible uniquement si Active ET en attente > 0 (sur Draft pas de candidatures, sur Closed on masque)
   const showNotifPill = isActive && candidaturesEnAttente > 0
@@ -180,7 +182,11 @@ useEffect(() => {
         {/* Jauge postes pourvus */}
         <div className="annonce-card-agri__progress">
           <div className="annonce-card-agri__progress-text">
-            <span className="annonce-card-agri__progress-label">
+            <span
+              className={`annonce-card-agri__progress-label ${
+                isProgressNeutral ? 'annonce-card-agri__progress-label--neutral' : ''
+              }`}
+            >
               {postesLabel}
             </span>
             <span className="annonce-card-agri__progress-total">
@@ -189,7 +195,9 @@ useEffect(() => {
           </div>
           <div className="annonce-card-agri__progress-bar">
             <div
-              className="annonce-card-agri__progress-fill"
+              className={`annonce-card-agri__progress-fill ${
+                isProgressNeutral ? 'annonce-card-agri__progress-fill--neutral' : ''
+              }`}
               style={{ width: `${fillPercent}%` }}
             />
           </div>
@@ -223,6 +231,5 @@ useEffect(() => {
     </article>
   )
 }
-
 
 export default AnnonceCardAgri

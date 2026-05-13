@@ -309,3 +309,11 @@
   .annonce-card-agri__candidatures-empty {
     font-style: italic;
   }
+
+  .annonce-card-agri__progress-label--neutral {
+    color: var(--labor-color-neutral);
+  }
+  
+  .annonce-card-agri__progress-fill--neutral {
+    background-color: var(--labor-color-neutral);
+  }

@@ -196,3 +196,11 @@
   .annonce-card-public__progress-fill--warning {
     background-color: var(--labor-color-warning);
   }
+
+.annonce-card-public__progress-label--neutral {
+  color: var(--labor-color-neutral);
+}
+
+.annonce-card-public__progress-fill--neutral {
+  background-color: var(--labor-color-neutral);
+}

@@ -57,27 +57,29 @@ function AnnonceCardSaison({
   const [isOverflowing, setIsOverflowing] = useState(false)
 
   // Le useEffect mesure le span de référence, pas le H3 affiché(pour eviter un probleme de double titre apres le changement de taille de la fentre )
-useEffect(() => {
-  const container = titleRef.current
-  const measure = measureRef.current
-  if (!container || !measure) return
+  useEffect(() => {
+    const container = titleRef.current
+    const measure = measureRef.current
+    if (!container || !measure) return
 
-  const checkOverflow = () => {
-    setIsOverflowing(measure.scrollWidth > container.clientWidth + 1)
-  }
+    const checkOverflow = () => {
+      setIsOverflowing(measure.scrollWidth > container.clientWidth + 1)
+    }
 
-  const observer = new ResizeObserver(checkOverflow)
-  observer.observe(container)
+    const observer = new ResizeObserver(checkOverflow)
+    observer.observe(container)
 
-  return () => observer.disconnect()
-}, [titre])
+    return () => observer.disconnect()
+  }, [titre])
 
-  // CALCULS DÉRIVÉS 
+  // CALCULS DÉRIVÉS
   const fillPercent = postesTotal > 0 ? (postesRestants / postesTotal) * 100 : 0
 
-  const isWarning = postesRestants === 1
-
   const isClosed = statut === JobListingStatus.Closed
+
+  const isNeutral = isClosed || postesRestants === 0
+
+  const isWarning = !isNeutral && postesRestants === 1
 
   const dateRange = formatDateRange(dateDebut, dateFin)
 
@@ -85,7 +87,9 @@ useEffect(() => {
     ? `url(${imgUrl})`
     : getGradientForCulture(cropType)
 
-  const postesLabel = `${postesRestants} poste${postesRestants > 1 ? 's' : ''} libre${postesRestants > 1 ? 's' : ''}`
+  const postesLabel = isNeutral
+    ? 'Complet'
+    : `${postesRestants} poste${postesRestants > 1 ? 's' : ''} libre${postesRestants > 1 ? 's' : ''}`
 
   const payFormatted = payAmount.toLocaleString('fr-FR')
 
@@ -104,7 +108,7 @@ useEffect(() => {
         className="annonce-card-saison__photo"
         style={{ background: photoBackground }}
       >
-        {/* Badge statut closed uniqueent*/}
+        {/* Badge statut closed uniquement*/}
         {isClosed && (
           <div className="annonce-card-saison__status annonce-card-saison__status--closed">
             <span className="annonce-card-saison__status-dot" />
@@ -116,7 +120,7 @@ useEffect(() => {
       {/* ZONE CONTENU */}
       <div className="annonce-card-saison__body">
 
-        {/* Titre avec marque */}
+        {/* Titre avec marquee */}
         <h3
           ref={titleRef}
           className={`annonce-card-saison__title ${
@@ -137,7 +141,7 @@ useEffect(() => {
               </>
             )}
           </span>
-          <span ref={measureRef} className="annonce-card-agri__title-measure">
+          <span ref={measureRef} className="annonce-card-saison__title-measure">
             {titre}
           </span>
         </h3>
@@ -189,24 +193,24 @@ useEffect(() => {
 
           {/* Tag hébergement */}
           {hebergement && (
-          <span
-            className="annonce-card-saison__tag"
-            title="Hébergement possible"
-          >
-            <svg
-              className="annonce-card-saison__tag-icon"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              aria-hidden="true"
+            <span
+              className="annonce-card-saison__tag"
+              title="Hébergement possible"
             >
-              <path d="M3 11l9-8 9 8v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1V11z" />
-            </svg>
-            <span className="annonce-card-saison__tag-label">
-              Hébergement possible
+              <svg
+                className="annonce-card-saison__tag-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                aria-hidden="true"
+              >
+                <path d="M3 11l9-8 9 8v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1V11z" />
+              </svg>
+              <span className="annonce-card-saison__tag-label">
+                Hébergement possible
+              </span>
             </span>
-          </span>
           )}
         </div>
 
@@ -215,7 +219,11 @@ useEffect(() => {
           <div className="annonce-card-saison__progress-text">
             <span
               className={`annonce-card-saison__progress-label ${
-                isWarning ? 'annonce-card-saison__progress-label--warning' : ''
+                isNeutral
+                  ? 'annonce-card-saison__progress-label--neutral'
+                  : isWarning
+                    ? 'annonce-card-saison__progress-label--warning'
+                    : ''
               }`}
             >
               {postesLabel}
@@ -227,7 +235,11 @@ useEffect(() => {
           <div className="annonce-card-saison__progress-bar">
             <div
               className={`annonce-card-saison__progress-fill ${
-                isWarning ? 'annonce-card-saison__progress-fill--warning' : ''
+                isNeutral
+                  ? 'annonce-card-saison__progress-fill--neutral'
+                  : isWarning
+                    ? 'annonce-card-saison__progress-fill--warning'
+                    : ''
               }`}
               style={{ width: `${fillPercent}%` }}
             />

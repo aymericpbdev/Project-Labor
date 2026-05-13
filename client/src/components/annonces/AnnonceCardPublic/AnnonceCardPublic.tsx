@@ -33,36 +33,33 @@ function AnnonceCardPublic({
   const [isOverflowing, setIsOverflowing] = useState(false)
 
   // EFFET : DÉTECTION DE L'OVERFLOW 
- // Le useEffect mesure scrollWidth (largeur réelle du texte, y compris ce qui dépasse) vs clientWidth (largeur visible). Si le texte déborde, on ajoute la classe --overflow qui active l'animation au hover
+  // Le useEffect mesure le span de référence, pas le H3 affiché(pour eviter un probleme de double titre apres le changement de taille de la fentre )
+  useEffect(() => {
+    const container = titleRef.current
+    const measure = measureRef.current
+    if (!container || !measure) return
 
-// Le useEffect mesure le span de référence, pas le H3 affiché(pour eviter un probleme de double titre apres le changement de taille de la fentre )
-useEffect(() => {
-  const container = titleRef.current
-  const measure = measureRef.current
-  if (!container || !measure) return
+    const checkOverflow = () => {
+      setIsOverflowing(measure.scrollWidth > container.clientWidth + 1)
+    }
 
-  const checkOverflow = () => {
-    setIsOverflowing(measure.scrollWidth > container.clientWidth + 1)
-  }
+    const observer = new ResizeObserver(checkOverflow)
+    observer.observe(container)
 
-  const observer = new ResizeObserver(checkOverflow)
-  observer.observe(container)
-
-  return () => observer.disconnect()
-}, [titre])
+    return () => observer.disconnect()
+  }, [titre])
 
   // CALCULS DÉRIVÉS
-
-  // Pourcentage de remplissage de la jauge (postes libres / total)
   const fillPercent = postesTotal > 0 ? (postesRestants / postesTotal) * 100 : 0
 
-  // Mode "warning", il ne reste qu'un seul poste => orange au lieu de sage
-  const isWarning = postesRestants === 1
+  const isNeutral = postesRestants === 0
 
-  // Singulier/pluriel sur le texte
-  const postesLabel = `${postesRestants} poste${postesRestants > 1 ? 's' : ''} libre${postesRestants > 1 ? 's' : ''}`
+  const isWarning = !isNeutral && postesRestants === 1
 
-  // Background : soit l'image fournie, soit le dégradé du cropType
+  const postesLabel = isNeutral
+    ? 'Complet'
+    : `${postesRestants} poste${postesRestants > 1 ? 's' : ''} libre${postesRestants > 1 ? 's' : ''}`
+
   const photoBackground = imgUrl
     ? `url(${imgUrl})`
     : getGradientForCulture(cropType)
@@ -103,7 +100,7 @@ useEffect(() => {
               </>
             )}
           </span>
-          <span ref={measureRef} className="annonce-card-agri__title-measure">
+          <span ref={measureRef} className="annonce-card-public__title-measure">
             {titre}
           </span>
         </h3>
@@ -129,7 +126,11 @@ useEffect(() => {
           <div className="annonce-card-public__progress-text">
             <span
               className={`annonce-card-public__progress-label ${
-                isWarning ? 'annonce-card-public__progress-label--warning' : ''
+                isNeutral
+                  ? 'annonce-card-public__progress-label--neutral'
+                  : isWarning
+                    ? 'annonce-card-public__progress-label--warning'
+                    : ''
               }`}
             >
               {postesLabel}
@@ -141,7 +142,11 @@ useEffect(() => {
           <div className="annonce-card-public__progress-bar">
             <div
               className={`annonce-card-public__progress-fill ${
-                isWarning ? 'annonce-card-public__progress-fill--warning' : ''
+                isNeutral
+                  ? 'annonce-card-public__progress-fill--neutral'
+                  : isWarning
+                    ? 'annonce-card-public__progress-fill--warning'
+                    : ''
               }`}
               style={{ width: `${fillPercent}%` }}
             />
