@@ -16,6 +16,18 @@
   
     transform-origin: center;
     position: relative;
+    container-type: inline-size;
+    container-name: card-saison;
+  }
+
+  @container card-saison (max-width: 260px) {
+    .annonce-card-saison__tag-label {
+      display: none;
+    }
+  
+    .annonce-card-saison__tag {
+      padding: 0.3125rem;
+    }
   }
   
   .annonce-card-saison:hover {

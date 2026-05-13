@@ -189,19 +189,24 @@ useEffect(() => {
 
           {/* Tag hébergement */}
           {hebergement && (
-            <span className="annonce-card-saison__tag">
-              <svg
-                className="annonce-card-saison__tag-icon"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                aria-hidden="true"
-              >
-                <path d="M3 11l9-8 9 8v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1V11z" />
-              </svg>
+          <span
+            className="annonce-card-saison__tag"
+            title="Hébergement possible"
+          >
+            <svg
+              className="annonce-card-saison__tag-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              aria-hidden="true"
+            >
+              <path d="M3 11l9-8 9 8v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1V11z" />
+            </svg>
+            <span className="annonce-card-saison__tag-label">
               Hébergement possible
             </span>
+          </span>
           )}
         </div>
 
