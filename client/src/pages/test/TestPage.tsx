@@ -72,9 +72,6 @@ const annoncesMock = [
         <h2 style={{ marginTop: '2rem' }}>Vue publique (AnnonceCardPublic)</h2>
         <div
           style={{
-            position: 'relative',
-            width: '90%',
-            left: '5%',
             display: 'grid',
             gridTemplateColumns: 'repeat(4, 1fr)',
             gap: '1rem',
@@ -89,7 +86,7 @@ const annoncesMock = [
               postesRestants={annonce.postesRestants}
               postesTotal={5}
               cropType={annonce.cropType}
-              onClick={() => console.log('click:', annonce.titre)}
+              to="#"
             />
           ))}
         </div>
@@ -97,16 +94,12 @@ const annoncesMock = [
         <h2 style={{ marginTop: '2rem' }}>Vue agriculteur (AnnonceCardAgri)</h2>
         <div
           style={{
-            position: 'relative',
-            width: '90%',
-            left: '5%',
             display: 'grid',
             gridTemplateColumns: 'repeat(4, 1fr)',
             gap: '1rem',
             marginTop: '0.75rem',
           }}
         >
-          {/* Active avec 3 en attente */}
           <AnnonceCardAgri
             titre="Cueilleur de pommes"
             cropType="Crop_Fruits"
@@ -117,10 +110,9 @@ const annoncesMock = [
             statut="Active"
             candidaturesTotal={8}
             candidaturesEnAttente={3}
-            onClick={() => console.log('click pommes')}
+            to="#"
           />
 
-          {/* Active sans en attente */}
           <AnnonceCardAgri
             titre="Aide vendanges Bordelais saison 2026"
             cropType="Crop_Vineyard"
@@ -130,9 +122,9 @@ const annoncesMock = [
             postesPourvus={5}
             statut="Active"
             candidaturesTotal={12}
+            to="#"
           />
 
-          {/* Brouillon */}
           <AnnonceCardAgri
             titre="Maraîchage été"
             cropType="Crop_MarketGardening"
@@ -142,9 +134,9 @@ const annoncesMock = [
             postesPourvus={0}
             statut="Draft"
             candidaturesTotal={0}
+            to="#"
           />
 
-          {/* Clôturée */}
           <AnnonceCardAgri
             titre="Récolte oliviers Provence"
             cropType="Crop_OliveTrees"
@@ -154,22 +146,19 @@ const annoncesMock = [
             postesPourvus={8}
             statut="Closed"
             candidaturesTotal={23}
+            to="#"
           />
         </div>
 
         <h2 style={{ marginTop: '2rem' }}>Vue saisonnier (AnnonceCardSaison)</h2>
         <div
           style={{
-            position: 'relative',
-            width: '90%',
-            left: '5%',
             display: 'grid',
             gridTemplateColumns: 'repeat(4, 1fr)',
             gap: '1rem',
             marginTop: '0.75rem',
           }}
         >
-          {/* Active hourly hébergement */}
           <AnnonceCardSaison
             titre="Cueilleur de pommes"
             cropType="Crop_Fruits"
@@ -183,10 +172,9 @@ const annoncesMock = [
             postesRestants={2}
             postesTotal={4}
             statut="Active"
-            onClick={() => console.log('click pommes')}
+            to="#"
           />
-
-          {/* Active weekly sans hébergement, titre long */}
+        
           <AnnonceCardSaison
             titre="Aide vendanges Bordelais saison 2026"
             cropType="Crop_Vineyard"
@@ -200,9 +188,9 @@ const annoncesMock = [
             postesRestants={3}
             postesTotal={6}
             statut="Active"
+            to="#"
           />
-
-          {/* Active monthly hébergement, warning 1 poste */}
+        
           <AnnonceCardSaison
             titre="Récolte oliviers Provence"
             cropType="Crop_OliveTrees"
@@ -216,9 +204,9 @@ const annoncesMock = [
             postesRestants={1}
             postesTotal={8}
             statut="Active"
+            to="#"
           />
-
-          {/* Closed */}
+        
           <AnnonceCardSaison
             titre="Cueillette fraises bio"
             cropType="Crop_Fruits"
@@ -232,9 +220,9 @@ const annoncesMock = [
             postesRestants={0}
             postesTotal={10}
             statut="Closed"
+            to="#"
           />
         </div>
-
 
 
 
