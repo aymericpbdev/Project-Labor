@@ -73,7 +73,7 @@ function AnnonceCardPublic({
       {/* Zone photo */}
       <div
         className="annonce-card-public__photo"
-        style={{ background: photoBackground }}
+        style={{ backgroundImage: photoBackground }}
       />
 
       {/* Zone contenu */}

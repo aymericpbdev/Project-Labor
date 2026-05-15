@@ -96,7 +96,7 @@
     animation-delay: 0.35s;
   }
 
-  .annonce-card-agri__title-measure {
+  .annonce-card-public__title-measure {
     position: absolute;
     top: 0;
     left: 0;
@@ -170,11 +170,11 @@
   }
   
   .annonce-card-public__progress-label--warning {
-    color: #B27512;
+    color: var(--labor-color-warning-text);
   }
   
   .annonce-card-public__progress-total {
-    font-size: 0.7rem;       
+    font-size: var(--labor-font-size-2xs);       
     color: var(--labor-color-neutral);
   }
   

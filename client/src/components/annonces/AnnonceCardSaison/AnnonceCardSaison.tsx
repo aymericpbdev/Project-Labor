@@ -106,7 +106,7 @@ function AnnonceCardSaison({
       {/*ZONE PHOTO */}
       <div
         className="annonce-card-saison__photo"
-        style={{ background: photoBackground }}
+        style={{ backgroundImage: photoBackground }}
       >
         {/* Badge statut closed uniquement*/}
         {isClosed && (

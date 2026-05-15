@@ -70,7 +70,7 @@
   }
   
   .annonce-card-agri__status--active {
-    background-color: rgba(237, 244, 232, 0.95); 
+    background-color: color-mix(in srgb, var(--labor-color-badge-active-bg) 95%, transparent); 
     color: var(--labor-color-badge-active);
   }
   .annonce-card-agri__status--active .annonce-card-agri__status-dot {
@@ -78,7 +78,7 @@
   }
   
   .annonce-card-agri__status--draft {
-    background-color: rgba(240, 237, 230, 0.95);  
+    background-color: color-mix(in srgb, var(--labor-color-badge-brouillon-bg) 95%, transparent);  
     color: var(--labor-color-badge-brouillon);
   }
   .annonce-card-agri__status--draft .annonce-card-agri__status-dot {
@@ -86,7 +86,7 @@
   }
   
   .annonce-card-agri__status--closed {
-    background-color: rgba(251, 234, 234, 0.95); 
+    background-color: color-mix(in srgb, var(--labor-color-badge-cloturee-bg) 95%, transparent); 
     color: var(--labor-color-badge-cloturee);
   }
   .annonce-card-agri__status--closed .annonce-card-agri__status-dot {
@@ -109,7 +109,7 @@
     font-family: var(--labor-font-heading);
     font-size: var(--labor-font-size-xs);
     font-weight: var(--labor-font-weight-semibold);
-    box-shadow: 0 4px 14px rgba(247, 107, 28, 0.35);
+    box-shadow: 0 4px 14px rgba(247, 107, 28, 0.35); /* Ombre orangée choix esthetique, Valeur en dur car très spécifique à "ombre sous un élément en gradient soleil", pas vocation à être réutilisée ailleurs. Si un autre cas se présente, factoriser à ce moment-là. */
     z-index: 4;
     transition: transform var(--labor-transition-fast), box-shadow var(--labor-transition-fast);
   }
@@ -117,6 +117,7 @@
   .annonce-card-agri:hover .annonce-card-agri__notif {
     transform: scale(1.05);
     box-shadow: 0 6px 18px rgba(247, 107, 28, 0.45);
+    /* Ombre orangée choix esthetique, Valeur en dur car très spécifique à "ombre sous un élément en gradient soleil", pas vocation à être réutilisée ailleurs. Si un autre cas se présente, factoriser à ce moment-là. */
   }
   
   .annonce-card-agri__notif-icon {
@@ -244,7 +245,7 @@
   
   .annonce-card-agri__divider {
     height: 1px;
-    background-color: #F0EBD5;
+    background-color: var(--labor-color-border-light);
     margin: 0.1rem 0;
   }
   
@@ -270,7 +271,7 @@
   }
   
   .annonce-card-agri__progress-total {
-    font-size: 0.6rem;   
+    font-size: var(--labor-font-size-2xs);   
     color: var(--labor-color-neutral);
   }
   

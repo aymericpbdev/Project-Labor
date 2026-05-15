@@ -102,7 +102,7 @@ function AnnonceCardAgri({
       {/* ZONE PHOTO*/}
       <div
         className="annonce-card-agri__photo"
-        style={{ background: photoBackground }}
+        style={{ backgroundImage: photoBackground }}
       >
         {/* Badge statut */}
         <div className={`annonce-card-agri__status annonce-card-agri__status--${statut.toLowerCase()}`}>
