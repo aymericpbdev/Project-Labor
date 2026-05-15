@@ -15,14 +15,22 @@
       box-shadow var(--labor-transition-medium),
       border-color var(--labor-transition-fast);
     transform-origin: center;
+    text-decoration: none;
+    color: inherit;
   }
   
-  .annonce-card-public:hover {
+  .annonce-card-public:hover,
+  .annonce-card-public:focus-visible {
     transform: scale(1.03);
     box-shadow: 0 8px 22px rgba(44, 42, 30, 0.12);
     border-color: var(--labor-color-border);
-    z-index: 2;           
-    position: relative;    
+    z-index: 2;
+    position: relative;
+  }
+
+  .annonce-card-public:focus-visible {
+    outline: 2px solid var(--labor-color-primary);
+    outline-offset: 2px;
   }
   
   .annonce-card-public__photo {
@@ -85,11 +93,15 @@
     transition: opacity var(--labor-transition-fast);
   }
   
-  .annonce-card-public:hover .annonce-card-public__title::after {
+  .annonce-card-public:hover .annonce-card-public__title::after,
+  .annonce-card-public:focus-visible .annonce-card-public__title::after {
     opacity: 0;
   }
   
   .annonce-card-public:hover
+    .annonce-card-public__title--overflow
+    .annonce-card-public__title-track,
+  .annonce-card-public:focus-visible
     .annonce-card-public__title--overflow
     .annonce-card-public__title-track {
     animation: annonce-card-public-marquee 9s linear infinite;
@@ -117,13 +129,16 @@
   
   /* Désactive l'animation pour les utilisateurs qui préfèrent moins de mouvement.
      Bonne pratique d'accessibilité. */
-  @media (prefers-reduced-motion: reduce) {
-    .annonce-card-public:hover
-      .annonce-card-public__title--overflow
-      .annonce-card-public__title-track {
-      animation: none;
+     @media (prefers-reduced-motion: reduce) {
+      .annonce-card-public:hover
+        .annonce-card-public__title--overflow
+        .annonce-card-public__title-track,
+      .annonce-card-public:focus-visible
+        .annonce-card-public__title--overflow
+        .annonce-card-public__title-track {
+        animation: none;
+      }
     }
-  }
   
   
   .annonce-card-public__meta {

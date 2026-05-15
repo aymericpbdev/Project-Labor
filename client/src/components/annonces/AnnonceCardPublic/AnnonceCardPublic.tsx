@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 import { getGradientForCulture } from '../../../utils/cultureGradient'
 import type { CropType } from '../../../types'
@@ -13,7 +14,7 @@ type AnnonceCardPublicProps = {
   postesTotal: number
   cropType?: CropType
   imgUrl?: string
-  onClick?: () => void
+  to: string          
 }
 
 // COMPOSANT 
@@ -24,7 +25,7 @@ function AnnonceCardPublic({
   postesTotal,
   cropType,
   imgUrl,
-  onClick,
+  to,
 }: AnnonceCardPublicProps) {
  
   // Ref sur le H3 (le conteneur en overflow:hidden) : c'est lui qui sait si son contenu déborde, pas le span interne qui peut s'étirer librement.
@@ -66,10 +67,7 @@ function AnnonceCardPublic({
 
 
   return (
-    <article
-      className="annonce-card-public"
-      onClick={onClick}
-    >
+    <Link to={to} className="annonce-card-public">
       {/* Zone photo */}
       <div
         className="annonce-card-public__photo"
@@ -154,7 +152,7 @@ function AnnonceCardPublic({
         </div>
 
       </div>
-    </article>
+    </Link>
   )
 }
 
