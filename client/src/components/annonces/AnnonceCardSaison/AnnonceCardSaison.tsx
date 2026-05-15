@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 import { getGradientForCulture } from '../../../utils/cultureGradient'
 import { formatDateRange } from '../../../utils/formatDate'
@@ -26,7 +27,7 @@ type AnnonceCardSaisonProps = {
   postesTotal: number
   statut: JobListingStatusType
   imgUrl?: string
-  onClick?: () => void
+  to: string
 }
 
 const PAYMENT_LABELS: Record<PaymentTypeType, string> = {
@@ -49,7 +50,7 @@ function AnnonceCardSaison({
   postesTotal,
   statut,
   imgUrl,
-  onClick,
+  to,
 }: AnnonceCardSaisonProps) {
 
   const titleRef = useRef<HTMLHeadingElement>(null)
@@ -101,7 +102,7 @@ function AnnonceCardSaison({
     .join(' ')
 
   return (
-    <article className={cardClasses} onClick={onClick}>
+    <Link to={to} className={cardClasses}>
 
       {/*ZONE PHOTO */}
       <div
@@ -247,7 +248,7 @@ function AnnonceCardSaison({
         </div>
 
       </div>
-    </article>
+      </Link>
   )
 }
 
