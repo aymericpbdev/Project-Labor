@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 import { getGradientForCulture } from '../../../utils/cultureGradient'
 import { formatDateRange } from '../../../utils/formatDate'
@@ -18,7 +19,7 @@ type AnnonceCardAgriProps = {
   candidaturesTotal: number
   candidaturesEnAttente?: number
   imgUrl?: string
-  onClick?: () => void
+  to: string
 }
 
 const STATUS_LABELS: Record<JobListingStatusType, string> = {
@@ -38,7 +39,7 @@ function AnnonceCardAgri({
   candidaturesTotal,
   candidaturesEnAttente = 0,
   imgUrl,
-  onClick,
+  to,
 }: AnnonceCardAgriProps) {
   // Ref sur le H3 (le conteneur en overflow:hidden) : c'est lui qui sait si son contenu déborde, pas le span interne qui peut s'étirer librement.
   // Dans la déclaration des refs, on en ajoute une 2e :
@@ -97,7 +98,7 @@ function AnnonceCardAgri({
   // RENDU
 
   return (
-    <article className={cardClasses} onClick={onClick}>
+    <Link to={to} className={cardClasses}>
 
       {/* ZONE PHOTO*/}
       <div
@@ -228,7 +229,7 @@ function AnnonceCardAgri({
         </div>
 
       </div>
-    </article>
+    </Link>
   )
 }
 
