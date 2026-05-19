@@ -32,14 +32,13 @@
     outline: none;
 }
 
-/* États */
 .labor-input:hover:not(:disabled):not(.error) {
     border-color: var(--labor-sage);
 }
 
 .labor-input:focus {
     border-color: var(--labor-orange);
-    box-shadow: 0 0 0 3px rgba(244, 162, 38, 0.2);
+    
 }
 
 .labor-input.error {
