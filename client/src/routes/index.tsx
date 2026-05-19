@@ -1,6 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom'
-import RegisterAgriPage from '../pages/public/Inscription-agri/RegisterAgriPage'
-import RegisterSaisonPage from '../pages/public/Inscription-saisonnier/RegisterSaisonPage'
+import RegisterAgriPage from '../pages/public/Inscription/agriculteur/RegisterAgriPage'
+import RegisterSaisonPage from '../pages/public/Inscription/saisonnier/RegisterSaisonPage'
+import InscriptionChoicePage from '../pages/public/Inscription/inscriptionChoicePage'
 
 // Layouts
 import PublicLayout from '../layout/PublicLayout'
@@ -22,8 +23,9 @@ const router = createBrowserRouter([
     children: [
       { path: '/', element: <LandingPage /> },
       { path: '/connexion', element: <Connexion /> },
-      { path: '/inscription-agri', element: <RegisterAgriPage /> },
-      { path: '/inscription-saison', element: <RegisterSaisonPage /> },
+      { path: '/inscription', element: <InscriptionChoicePage /> },
+      { path: '/inscription/agriculteur', element: <RegisterAgriPage /> },
+      { path: '/inscription/saisonnier', element: <RegisterSaisonPage /> },
     ],
   },
 

@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { LaborInput } from '../../../components/ui/Input/input'
-import  LinkText  from '../../../components/ui/LinkText/LinkText'
-import  Button  from '../../../components/ui/Button/Button'
-import * as authService from '../../../services/authService'
-import './inscription-agri.css'
+import { LaborInput } from '../../../../components/ui/Input/input'
+import LinkText from '../../../../components/ui/LinkText/LinkText'
+import Button from '../../../../components/ui/Button/Button'
+import * as authService from '../../../../services/authService'
+import './inscriptionSaisonnier.css'
 
 
 function validateRequired(value: string): string | undefined {
@@ -20,6 +20,7 @@ function validateEmail(value: string): string | undefined {
 function validatePassword(value: string): string | undefined {
   if (!value) return '12 caractères minimum.'
   if (value.length < 12) return '12 caractères minimum.'
+  if (value.length > 128) return '128 caractères maximum.'
 }
 
 function validateConfirm(value: string, password: string): string | undefined {
@@ -27,44 +28,35 @@ function validateConfirm(value: string, password: string): string | undefined {
   if (value !== password) return 'Les mots de passe ne correspondent pas.'
 }
 
-function validateSiret(value: string): string | undefined {
-  const cleaned = value.replace(/\s/g, '')
-  if (!cleaned) return 'Ce champ est requis.'
-  if (!/^\d{14}$/.test(cleaned)) return 'Le SIRET doit contenir 14 chiffres.'
-}
-
-function RegisterAgriPage() {
+function RegisterSaisonPage() {
   const navigate = useNavigate()
   
-  const [firstName, setFirstName]         = useState('')
-  const [lastName, setLastName]           = useState('')
-  const [email, setEmail]                 = useState('')
-  const [exploitation, setExploitation]   = useState('')
-  const [siret, setSiret]                 = useState('')
-  const [password, setPassword]           = useState('')
+  const [firstName, setFirstName]             = useState('')
+  const [lastName, setLastName]               = useState('')
+  const [email, setEmail]                     = useState('')
+  const [password, setPassword]               = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
-    
+ 
   const [errors, setErrors] = useState<Record<string, string | undefined>>({})
   
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading]   = useState(false)
   const [serverError, setServerError] = useState<string | undefined>()
-    
+  
   function validateForm(): boolean {
     const newErrors: Record<string, string | undefined> = {
       firstName:       validateRequired(firstName),
       lastName:        validateRequired(lastName),
       email:           validateEmail(email),
-      exploitation:    validateRequired(exploitation),
-      siret:           validateSiret(siret),
       password:        validatePassword(password),
       confirmPassword: validateConfirm(confirmPassword, password),
     }
 
     setErrors(newErrors)
-        
+
     return !Object.values(newErrors).some(Boolean)
   }
-    
+
+  /* Soumission */
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
     setServerError(undefined)
@@ -74,15 +66,15 @@ function RegisterAgriPage() {
     setIsLoading(true)
 
     try {
-      await authService.register(email, password, firstName, lastName, 'farmer')
-      navigate('/agri')
+      await authService.register(email, password, firstName, lastName, 'SeasonalWorker')
+      navigate('/saison')
     } catch (error) {
       setServerError(error instanceof Error ? error.message : 'Une erreur est survenue.')
     } finally {
       setIsLoading(false)
     }
   }
-    
+  
   function handleBlur(field: string, validatorFn: () => string | undefined) {
     setErrors(prev => ({ ...prev, [field]: validatorFn() }))
   }
@@ -92,9 +84,9 @@ function RegisterAgriPage() {
       <div className="form-card">
         
         <div className="form-card-header">
-          <span className="form-card-badge">Agriculteur</span>
-          <h1 className="form-card-title">Inscription agriculteur</h1>
-          <p className="form-card-subtitle">Créez votre espace et publiez vos annonces</p>
+          <span className="form-card-badge">Saisonnier</span>
+          <h1 className="form-card-title">Inscription saisonnier</h1>
+          <p className="form-card-subtitle">Créez votre profil et trouvez votre prochaine mission</p>
           <div className="form-divider"></div>
         </div>
         
@@ -109,7 +101,7 @@ function RegisterAgriPage() {
               id="lastName"
               label="Nom"
               type="text"
-              placeholder="Dupont"
+              placeholder="Martin"
               value={lastName}
               error={errors.lastName}
               onChange={e => setLastName(e.target.value)}
@@ -119,7 +111,7 @@ function RegisterAgriPage() {
               id="firstName"
               label="Prénom"
               type="text"
-              placeholder="Jean"
+              placeholder="Lucie"
               value={firstName}
               error={errors.firstName}
               onChange={e => setFirstName(e.target.value)}
@@ -131,33 +123,11 @@ function RegisterAgriPage() {
             id="email"
             label="Email"
             type="email"
-            placeholder="jean.dupont@exemple.fr"
+            placeholder="lucie.martin@exemple.fr"
             value={email}
             error={errors.email}
             onChange={e => setEmail(e.target.value)}
             onBlur={() => handleBlur('email', () => validateEmail(email))}
-          />
-          
-          <LaborInput
-            id="exploitation"
-            label="Nom de l'exploitation"
-            type="text"
-            placeholder="Ferme des Coteaux"
-            value={exploitation}
-            error={errors.exploitation}
-            onChange={e => setExploitation(e.target.value)}
-            onBlur={() => handleBlur('exploitation', () => validateRequired(exploitation))}
-          />
-          
-          <LaborInput
-            id="siret"
-            label="N° SIRET"
-            type="text"
-            placeholder="123 456 789 00012"
-            value={siret}
-            error={errors.siret}
-            onChange={e => setSiret(e.target.value)}
-            onBlur={() => handleBlur('siret', () => validateSiret(siret))}
           />
           
           <LaborInput
@@ -167,6 +137,7 @@ function RegisterAgriPage() {
             placeholder="••••••••"
             value={password}
             error={errors.password}
+            maxLength={128}
             onChange={e => {
               setPassword(e.target.value)
               if (confirmPassword) {
@@ -188,6 +159,7 @@ function RegisterAgriPage() {
             id="confirmPassword"
             label="Confirmer mot de passe"
             type="password"
+            maxLength={128}
             placeholder="••••••••"
             value={confirmPassword}
             error={errors.confirmPassword}
@@ -211,7 +183,7 @@ function RegisterAgriPage() {
           </Button>
 
         </form>
-                
+        
         <p className="form-footer">
           Déjà un compte ?{' '}
           <LinkText to="/connexion">Se connecter</LinkText>
@@ -222,4 +194,4 @@ function RegisterAgriPage() {
   )
 }
 
-export default RegisterAgriPage
+export default RegisterSaisonPage

@@ -11,6 +11,7 @@ interface LaborInputProps {
     id: string;
     isDisabled?: boolean;
     error?: string;
+    maxLength?: number;
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
     onBlur?: () => void;
 }
@@ -25,6 +26,7 @@ export const LaborInput: React.FC<LaborInputProps> = ({
     error,
     onChange,
     onBlur,
+    maxLength,
 }) => {
     return (
         <div className="labor-input-container">
@@ -40,6 +42,7 @@ export const LaborInput: React.FC<LaborInputProps> = ({
                     disabled={isDisabled}
                     onChange={onChange}
                     onBlur={onBlur}
+                    maxLength={maxLength}
                     className={`labor-input ${error ? 'error' : ''}`}
                 />
 

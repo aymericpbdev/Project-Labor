@@ -1,0 +1,188 @@
+.choice-wrapper {
+  display: flex;
+  min-height: calc(100vh - 64px);
+  align-items: flex-start;
+  justify-content: center;
+  padding: var(--labor-spacing-2xl) var(--labor-spacing-xl);
+}
+
+.choice-card {
+  width: 100%;
+  max-width: 760px;
+  background: #FAFAF7;
+  border: 1.5px solid #D9D4BC;
+  border-radius: var(--labor-radius-l);
+  padding: var(--labor-spacing-2xl);
+  box-shadow: 0 12px 40px rgba(44, 42, 30, 0.14);
+  animation: fadeUp 0.5s ease both;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.form-card-header {
+  text-align: center;
+  margin-bottom: var(--labor-spacing-xl);
+}
+
+.form-card-badge {
+  display: inline-block;
+  font-family: var(--labor-font-heading);
+  font-size: var(--labor-font-size-xs);
+  font-weight: var(--labor-font-weight-semibold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--labor-fern);
+  background: #EDF4E8;
+  border-radius: var(--labor-radius-full);
+  padding: 4px 14px;
+  margin-bottom: var(--labor-spacing-m);
+}
+
+.form-card-title {
+  font-family: var(--labor-font-heading);
+  font-size: var(--labor-font-size-2xl);
+  font-weight: var(--labor-font-weight-bold);
+  color: var(--labor-charcoal);
+  margin-bottom: 6px;
+}
+
+.form-card-subtitle {
+  font-size: var(--labor-font-size-s);
+  color: #8A8474;
+}
+
+.form-divider {
+  width: 48px;
+  height: 3px;
+  background: linear-gradient(to right, #FAD961, #F4A226);
+  border-radius: var(--labor-radius-full);
+  margin: var(--labor-spacing-l) auto;
+}
+
+.choice-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--labor-spacing-l);
+  margin-bottom: var(--labor-spacing-xl);
+}
+
+.choice-item {
+  position: relative;
+  height: 280px;
+  border-radius: var(--labor-radius-l);
+  overflow: hidden;
+  cursor: pointer;
+  border: none;
+  background-size: cover;
+  background-position: center;
+  transition: transform var(--labor-transition-medium), box-shadow var(--labor-transition-medium);
+}
+
+.choice-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(44, 42, 30, 0.25);
+}
+
+.choice-item:active {
+  transform: scale(0.98);
+}
+
+.choice-item__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(44, 42, 30, 0.85) 0%,
+    rgba(44, 42, 30, 0.3) 50%,
+    rgba(44, 42, 30, 0.1) 100%
+  );
+  transition: background var(--labor-transition-medium);
+}
+
+.choice-item:hover .choice-item__overlay {
+  background: linear-gradient(
+    to top,
+    rgba(44, 42, 30, 0.9) 0%,
+    rgba(44, 42, 30, 0.45) 50%,
+    rgba(44, 42, 30, 0.2) 100%
+  );
+}
+
+.choice-item__content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: var(--labor-spacing-l);
+  text-align: left;
+}
+
+.choice-item__badge {
+  display: inline-block;
+  font-family: var(--labor-font-heading);
+  font-size: var(--labor-font-size-xs);
+  font-weight: var(--labor-font-weight-semibold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: var(--labor-radius-full);
+  padding: 3px 12px;
+  margin-bottom: var(--labor-spacing-s);
+}
+
+.choice-item__badge--agri {
+  color: var(--labor-fern);
+  background: rgba(237, 244, 232, 0.92);
+}
+
+.choice-item__badge--saison {
+  color: var(--labor-color-secondary-dark);
+  background: rgba(253, 243, 224, 0.92);
+}
+
+.choice-item__title {
+  font-family: var(--labor-font-heading);
+  font-size: var(--labor-font-size-xl);
+  font-weight: var(--labor-font-weight-bold);
+  color: #fff;
+  margin-bottom: var(--labor-spacing-xs);
+  line-height: 1.2;
+}
+
+.choice-item__desc {
+  font-family: var(--labor-font-body);
+  font-size: var(--labor-font-size-s);
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.4;
+}
+
+.form-footer {
+  text-align: center;
+  font-size: var(--labor-font-size-s);
+  color: #8A8474;
+}
+
+.link-text {
+  color: var(--labor-color-primary);
+  font-weight: 700;
+  text-decoration: none;
+  position: relative;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.link-text::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: var(--labor-color-primary);
+  transition: width 0.3s ease;
+}
+
+.link-text:hover { color: var(--labor-color-primary-dark); }
+.link-text:hover::after { width: 100%; }
