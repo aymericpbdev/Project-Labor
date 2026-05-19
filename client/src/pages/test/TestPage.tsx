@@ -1,9 +1,6 @@
 import { useState } from 'react'
 
 import Button from '../../components/ui/Button/Button'
-import AnnonceCard from '../../components/annonces/AnnonceCard/AnnonceCard'
-import AnnonceCardSaison from '../../components/annonces/AnnonceCardSaison/AnnonceCardSaison'
-import AnnonceCardAgri from '../../components/annonces/AnnonceCardAgri/AnnonceCardAgri'
 import Badge from '../../components/ui/Badge/Badge'
 import Tag from '../../components/ui/Tag/Tag'
 import type { Skill } from '../../types'
@@ -15,6 +12,8 @@ import  LaborTextarea  from '../../components/ui/Textarea/textarea'
 import LaborMultiSelect from '../../components/ui/Select/select'
 import LaborCheckbox from '../../components/ui/Checkbox/checkbox'
 import AnnonceCardPublic from '../../components/annonces/AnnonceCardPublic/AnnonceCardPublic'
+import AnnonceCardAgri from '../../components/annonces/AnnonceCardAgri/AnnonceCardAgri'
+import AnnonceCardSaison from '../../components/annonces/AnnonceCardSaison/AnnonceCardSaison'
 
 
 
@@ -56,7 +55,7 @@ const [checkedValuesLabor, setCheckedValuesLabor] = useState<string[]>([])
 
 const annoncesMock = [
   { titre: 'Castrage maïs', departement: 'Landes', postesRestants: 2, cropType: 'Crop_Cereals' as const },
-  { titre: 'Récolte de tomates', departement: 'Tarn-et-Garonne', postesRestants: 4, cropType: 'Crop_Vegetables' as const },
+  { titre: 'Récolte de tomates', departement: 'Tarn-et-Garonne', postesRestants: 0, cropType: 'Crop_Vegetables' as const },
   { titre: 'Cueillette de prunes', departement: 'Lot-et-Garonne', postesRestants: 1, cropType: 'Crop_Fruits' as const },
   { titre: 'Betails', departement: 'Gers', postesRestants: 3, cropType: 'Crop_Livestock' as const },
   { titre: 'Taille de vigne', departement: 'Hérault', postesRestants: 5, cropType: 'Crop_Vineyard' as const },
@@ -70,78 +69,162 @@ const annoncesMock = [
         <Button variant='danger' size='l'>warnig</Button>
         <Button variant='primary' size='m'>Connexion</Button>
 
-        <AnnonceCard typeCulture='Crop_Horticulture' onClick={() => alert('cliqué !')}>
-        <div>
-          <h3>Aide vendanges</h3>
-          <p>Vigne · Bordeaux, 33</p>
-          <p>1 sept → 15 oct</p>
+        <h2 style={{ marginTop: '2rem' }}>Vue publique (AnnonceCardPublic)</h2>
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(4, 1fr)',
+            gap: '1rem',
+            marginTop: '0.75rem',
+          }}
+        >
+          {annoncesMock.slice(0, 4).map((annonce) => (
+            <AnnonceCardPublic
+              key={annonce.titre}
+              titre={annonce.titre}
+              departement={annonce.departement}
+              postesRestants={annonce.postesRestants}
+              postesTotal={5}
+              cropType={annonce.cropType}
+              to="#"
+            />
+          ))}
         </div>
-      </AnnonceCard>
 
-      {annoncesMock.map((annonce, index) => (
-          <AnnonceCardPublic
-            key={index}
-            titre={annonce.titre}
-            departement={annonce.departement}
-            postesRestants={annonce.postesRestants}
-            cropType={annonce.cropType}
-            onClick={() => alert('Cliqué — redirige vers connexion')}
+        <h2 style={{ marginTop: '2rem' }}>Vue agriculteur (AnnonceCardAgri)</h2>
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(4, 1fr)',
+            gap: '1rem',
+            marginTop: '0.75rem',
+          }}
+        >
+          <AnnonceCardAgri
+            titre="Cueilleur de pommes"
+            cropType="Crop_Fruits"
+            dateDebut="2026-06-15T08:30:00Z"
+            dateFin="2026-08-30T08:30:00Z"
+            postesTotal={4}
+            postesPourvus={2}
+            statut="Active"
+            candidaturesTotal={8}
+            candidaturesEnAttente={3}
+            to="#"
           />
-        ))}
 
-      <AnnonceCard typeCulture=" ">
-        <div>
-          <h3>Cueilleur de pommes</h3>
-          <p>Arboriculture · Montauban, 82</p>
-          <p>15 juin → 30 août</p>
+          <AnnonceCardAgri
+            titre="Aide vendanges Bordelais saison 2026"
+            cropType="Crop_Vineyard"
+            dateDebut="2026-09-01T08:30:00Z"
+            dateFin="2026-10-15T08:30:00Z"
+            postesTotal={6}
+            postesPourvus={5}
+            statut="Active"
+            candidaturesTotal={12}
+            to="#"
+          />
+
+          <AnnonceCardAgri
+            titre="Maraîchage été"
+            cropType="Crop_MarketGardening"
+            dateDebut="2026-06-10T08:30:00Z"
+            dateFin="2026-09-30T08:30:00Z"
+            postesTotal={5}
+            postesPourvus={0}
+            statut="Draft"
+            candidaturesTotal={0}
+            to="#"
+          />
+
+          <AnnonceCardAgri
+            titre="Récolte oliviers Provence"
+            cropType="Crop_OliveTrees"
+            dateDebut="2025-10-01T08:30:00Z"
+            dateFin="2025-11-20T08:30:00Z"
+            postesTotal={8}
+            postesPourvus={8}
+            statut="Closed"
+            candidaturesTotal={23}
+            to="#"
+          />
         </div>
-      </AnnonceCard>
 
-      <h2>Vue saisonnier</h2>
-      <AnnonceCardSaison
-        titre="Cueilleur de pommes"
-        cropType="Crop_Fruits"
-        ville="Montauban"
-        departement="82"
-        dateDebut="15 juin"
-        dateFin="30 août"
-        hebergement={true}
-        payAmount={12}
-        paymentType="Hourly"
-        postesRestants={2}
-        postesTotal={3}
-        statut="Active"
-        onClick={() => alert('Voir annonce')}
-      />
+        <h2 style={{ marginTop: '2rem' }}>Vue saisonnier (AnnonceCardSaison)</h2>
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(4, 1fr)',
+            gap: '1rem',
+            marginTop: '0.75rem',
+          }}
+        >
+          <AnnonceCardSaison
+            titre="Cueilleur de pommes"
+            cropType="Crop_Fruits"
+            ville="Montauban"
+            departement="Tarn-et-Garonne"
+            dateDebut="2026-06-15T08:30:00Z"
+            dateFin="2026-08-30T08:30:00Z"
+            hebergement={true}
+            payAmount={12}
+            paymentType="Hourly"
+            postesRestants={2}
+            postesTotal={4}
+            statut="Active"
+            to="#"
+          />
+        
+          <AnnonceCardSaison
+            titre="Aide vendanges Bordelais saison 2026"
+            cropType="Crop_Vineyard"
+            ville="Saint-Émilion"
+            departement="Gironde"
+            dateDebut="2026-09-01T08:30:00Z"
+            dateFin="2026-10-15T08:30:00Z"
+            hebergement={false}
+            payAmount={450}
+            paymentType="Weekly"
+            postesRestants={3}
+            postesTotal={6}
+            statut="Active"
+            to="#"
+          />
+        
+          <AnnonceCardSaison
+            titre="Récolte oliviers Provence"
+            cropType="Crop_OliveTrees"
+            ville="Aix-en-Provence"
+            departement="Bouches-du-Rhône"
+            dateDebut="2026-10-01T08:30:00Z"
+            dateFin="2026-11-20T08:30:00Z"
+            hebergement={true}
+            payAmount={1800}
+            paymentType="Monthly"
+            postesRestants={1}
+            postesTotal={8}
+            statut="Active"
+            to="#"
+          />
+        
+          <AnnonceCardSaison
+            titre="Cueillette fraises bio"
+            cropType="Crop_Fruits"
+            ville="Sarlat"
+            departement="Dordogne"
+            dateDebut="2025-05-01T08:30:00Z"
+            dateFin="2025-07-15T08:30:00Z"
+            hebergement={false}
+            payAmount={12}
+            paymentType="Hourly"
+            postesRestants={0}
+            postesTotal={10}
+            statut="Closed"
+            to="#"
+          />
+        </div>
 
-      <AnnonceCardSaison
-        titre="Aide vendanges"
-        cropType="Crop_Vineyard"
-        ville="Bordeaux"
-        departement="33"
-        dateDebut="1 sept"
-        dateFin="15 oct"
-        hebergement={false}
-        payAmount={110}
-        paymentType="Weekly"
-        postesRestants={4}
-        postesTotal={6}
-        statut="Active"
-      />
 
-      <h2 style={{ marginTop: '2rem' }}>Vue agriculteur</h2>
-
-      <AnnonceCardAgri
-        titre="Cueilleur de pommes"
-        cropType="Crop_Fruits"
-        dateDebut="15 juin"
-        dateFin="30 août"
-        postesTotal={3}
-        postesPourvus={1}
-        statut="Active"
-        candidaturesTotal={5}
-        candidaturesEnAttente={2}
-      />
 
 
       <Badge variant='Pending' size='l'  ></Badge>

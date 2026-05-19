@@ -17,6 +17,7 @@
     /* Texte */
     --labor-color-text: var(--labor-charcoal);
     --labor-color-text-light: var(--labor-cream);
+    --labor-color-text-white: #fff;
     --labor-color-text-green: var(--labor-sage);
     --labor-color-text-reverse: ;
 
@@ -52,6 +53,7 @@
     /* Feedbacks/Statuts */
     --labor-color-success: var(--labor-sage);
     --labor-color-warning: var(--labor-orange);
+    --labor-color-warning-text: #B27512;
     --labor-color-danger: #C4453C ;
     --labor-color-neutral: #8A8474 ;
 
@@ -100,6 +102,7 @@
     --labor-font-weight-bold: 700;
 
     /* font size (desk) */
+    --labor-font-size-2xs: 0.7rem;
     --labor-font-size-xs: 0.75rem;
     --labor-font-size-s: 0.875rem;
     --labor-font-size-m: 1rem;
