@@ -1,7 +1,14 @@
-import AnnonceCard from '../AnnonceCard/AnnonceCard'
-import Badge from '../../ui/Badge/Badge'
-import type { CropType, JobListingStatus, PaymentType } from '../../../types'
+import { useEffect, useRef, useState } from 'react'
+import { Link } from 'react-router-dom'
 
+import { getGradientForCulture } from '../../../utils/cultureGradient'
+import { formatDateRange } from '../../../utils/formatDate'
+import { JobListingStatus, PaymentType } from '../../../types'
+import type {
+  CropType,
+  JobListingStatus as JobListingStatusType,
+  PaymentType as PaymentTypeType,
+} from '../../../types'
 
 import './AnnonceCardSaison.css'
 
@@ -11,26 +18,24 @@ type AnnonceCardSaisonProps = {
   cropType: CropType
   ville: string
   departement: string
-  dateDebut: string
-  dateFin: string
+  dateDebut: string                 // ISO 8601
+  dateFin: string                   // ISO 8601
   hebergement: boolean
   payAmount: number
-  paymentType: PaymentType
+  paymentType: PaymentTypeType
   postesRestants: number
   postesTotal: number
-  statut: JobListingStatus
+  statut: JobListingStatusType
   imgUrl?: string
-  onClick?: () => void
+  to: string
 }
 
-// Labels français pour les types de paiement
-const PAYMENT_LABELS: Record<PaymentType, string> = {
-  Hourly: '/h',
-  Weekly: '/sem',
-  Monthly: '/mois',
+const PAYMENT_LABELS: Record<PaymentTypeType, string> = {
+  [PaymentType.Hourly]: '/ heure',
+  [PaymentType.Weekly]: '/ semaine',
+  [PaymentType.Monthly]: '/ mois',
 }
 
-// COMPOSANT
 function AnnonceCardSaison({
   titre,
   cropType,
@@ -45,52 +50,205 @@ function AnnonceCardSaison({
   postesTotal,
   statut,
   imgUrl,
-  onClick,
+  to,
 }: AnnonceCardSaisonProps) {
+
+  const titleRef = useRef<HTMLHeadingElement>(null)
+  const measureRef = useRef<HTMLSpanElement>(null)
+  const [isOverflowing, setIsOverflowing] = useState(false)
+
+  // Le useEffect mesure le span de référence, pas le H3 affiché(pour eviter un probleme de double titre apres le changement de taille de la fentre )
+  useEffect(() => {
+    const container = titleRef.current
+    const measure = measureRef.current
+    if (!container || !measure) return
+
+    const checkOverflow = () => {
+      setIsOverflowing(measure.scrollWidth > container.clientWidth + 1)
+    }
+
+    const observer = new ResizeObserver(checkOverflow)
+    observer.observe(container)
+
+    return () => observer.disconnect()
+  }, [titre])
+
+  // CALCULS DÉRIVÉS
+  const fillPercent = postesTotal > 0 ? (postesRestants / postesTotal) * 100 : 0
+
+  const isClosed = statut === JobListingStatus.Closed
+
+  const isNeutral = isClosed || postesRestants === 0
+
+  const isWarning = !isNeutral && postesRestants === 1
+
+  const dateRange = formatDateRange(dateDebut, dateFin)
+
+  const photoBackground = imgUrl
+    ? `url(${imgUrl})`
+    : getGradientForCulture(cropType)
+
+  const postesLabel = isNeutral
+    ? 'Complet'
+    : `${postesRestants} poste${postesRestants > 1 ? 's' : ''} libre${postesRestants > 1 ? 's' : ''}`
+
+  const payFormatted = payAmount.toLocaleString('fr-FR')
+
+  const cardClasses = [
+    'annonce-card-saison',
+    isClosed && 'annonce-card-saison--closed',
+  ]
+    .filter(Boolean)
+    .join(' ')
+
   return (
-    <AnnonceCard
-      typeCulture={cropType}
-      imgUrl={imgUrl}
-      onClick={onClick}
-    >
-      {/* En-tête : titre + badge */}
-      <div className="annonce-saison__header">
-        <div>
-          <h3 className="annonce-saison__title">{titre}</h3>
-          <p className="annonce-saison__subtitle">
-            {ville}, {departement}
-          </p>
+    <Link to={to} className={cardClasses}>
+
+      {/*ZONE PHOTO */}
+      <div
+        className="annonce-card-saison__photo"
+        style={{ backgroundImage: photoBackground }}
+      >
+        {/* Badge statut closed uniquement*/}
+        {isClosed && (
+          <div className="annonce-card-saison__status annonce-card-saison__status--closed">
+            <span className="annonce-card-saison__status-dot" />
+            Clôturée
+          </div>
+        )}
+      </div>
+
+      {/* ZONE CONTENU */}
+      <div className="annonce-card-saison__body">
+
+        {/* Titre avec marquee */}
+        <h3
+          ref={titleRef}
+          className={`annonce-card-saison__title ${
+            isOverflowing ? 'annonce-card-saison__title--overflow' : ''
+          }`}
+        >
+          <span className="annonce-card-saison__title-track">
+            <span className="annonce-card-saison__title-text">
+              {titre}
+            </span>
+            {isOverflowing && (
+              <>
+                <span className="annonce-card-saison__title-spacer" />
+                <span className="annonce-card-saison__title-text" aria-hidden="true">
+                  {titre}
+                </span>
+                <span className="annonce-card-saison__title-spacer" />
+              </>
+            )}
+          </span>
+          <span ref={measureRef} className="annonce-card-saison__title-measure">
+            {titre}
+          </span>
+        </h3>
+
+        {/* Ville + département */}
+        <div className="annonce-card-saison__meta">
+          <svg
+            className="annonce-card-saison__meta-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            aria-hidden="true"
+          >
+            <path d="M12 21s-7-7.5-7-12a7 7 0 1 1 14 0c0 4.5-7 12-7 12z" />
+            <circle cx="12" cy="9" r="2.5" />
+          </svg>
+          <span>{ville}, {departement}</span>
         </div>
-        <Badge variant={statut} />
-      </div>
 
-      {/* Méta : dates + hébergement */}
-      <div className="annonce-saison__meta">
-        <span className="annonce-saison__meta-item">
-          <svg className="annonce-saison__icon" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-            <rect x="3" y="4" width="18" height="18" rx="2"/>
-            <path d="M16 2v4M8 2v4M3 10h18"/>
+        {/* Période */}
+        <div className="annonce-card-saison__meta">
+          <svg
+            className="annonce-card-saison__meta-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            aria-hidden="true"
+          >
+            <rect x="3" y="5" width="18" height="16" rx="2" />
+            <path d="M3 9h18M8 3v4M16 3v4" />
           </svg>
-          {dateDebut} → {dateFin}
-        </span>
-        <span className="annonce-saison__meta-item">
-          <svg className="annonce-saison__icon" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-          </svg>
-          {hebergement ? 'Hébergement' : 'Pas d\'hébergement'}
-        </span>
-      </div>
+          <span>{dateRange}</span>
+        </div>
 
-      {/* Footer : rémunération + postes */}
-      <div className="annonce-saison__footer">
-        <span className="annonce-saison__reward">
-          {payAmount} €{PAYMENT_LABELS[paymentType]}
-        </span>
-        <span className="annonce-saison__postes">
-          <strong>{postesRestants}</strong> postes restants sur {postesTotal}
-        </span>
+        <div className="annonce-card-saison__divider" />
+
+        {/* Rémunération + tag hébergement */}
+        <div className="annonce-card-saison__bottom-row">
+          <div className="annonce-card-saison__pay">
+            <span className="annonce-card-saison__pay-amount">
+              {payFormatted} €
+            </span>
+            <span className="annonce-card-saison__pay-unit">
+              {PAYMENT_LABELS[paymentType]}
+            </span>
+          </div>
+
+          {/* Tag hébergement */}
+          {hebergement && (
+            <span
+              className="annonce-card-saison__tag"
+              title="Hébergement possible"
+            >
+              <svg
+                className="annonce-card-saison__tag-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                aria-hidden="true"
+              >
+                <path d="M3 11l9-8 9 8v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1V11z" />
+              </svg>
+              <span className="annonce-card-saison__tag-label">
+                Hébergement possible
+              </span>
+            </span>
+          )}
+        </div>
+
+        {/* Jauge de postes libres */}
+        <div className="annonce-card-saison__progress">
+          <div className="annonce-card-saison__progress-text">
+            <span
+              className={`annonce-card-saison__progress-label ${
+                isNeutral
+                  ? 'annonce-card-saison__progress-label--neutral'
+                  : isWarning
+                    ? 'annonce-card-saison__progress-label--warning'
+                    : ''
+              }`}
+            >
+              {postesLabel}
+            </span>
+            <span className="annonce-card-saison__progress-total">
+              sur {postesTotal}
+            </span>
+          </div>
+          <div className="annonce-card-saison__progress-bar">
+            <div
+              className={`annonce-card-saison__progress-fill ${
+                isNeutral
+                  ? 'annonce-card-saison__progress-fill--neutral'
+                  : isWarning
+                    ? 'annonce-card-saison__progress-fill--warning'
+                    : ''
+              }`}
+              style={{ width: `${fillPercent}%` }}
+            />
+          </div>
+        </div>
+
       </div>
-    </AnnonceCard>
+      </Link>
   )
 }
 
